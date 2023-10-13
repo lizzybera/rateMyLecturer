@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const [email, setEmail] = useState<boolean>(false);
@@ -23,9 +24,9 @@ const SignIn = () => {
     }
   };
   return (
-    <div className="w-full h-[100vh] justify-center items-center flex bg-slate-500">
+    <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10">
       {/* form the body */}
-      <div className="w-[90%] tab:w-[550px] bg-white  p-3 desktop:flex desktop:justify-center desktop:items-center desktop:flex-col "
+      <div className="w-[90%] tab:w-[550px] bg-white  p-3 desktop:flex desktop:justify-center desktop:items-center desktop:flex-col shadow-2xl"
       onClick={()=>{
         onEmail2()
         onPassword2()
@@ -52,6 +53,7 @@ const SignIn = () => {
               Sign in with Google
             </div>
           </div>
+            
 
           {/* options */}
           <div className="w-full flex justify-between items-center mt-7">
@@ -121,10 +123,13 @@ const SignIn = () => {
             )}
             </div>
 
-            <div className="w-full h-[45px] duration-[350ms] rounded-[25px] border border-[blue] mt-[47px] flex justify-center items-center text-white bg-black hover:cursor-pointer hover:scale-[1.1] ">
+            <div className="text-blue-700 font-[700] w-full flex justify-center items-cente mt-5 ml-1">Forgot your password?</div>
+
+            <div className="w-full h-[45px] duration-[350ms] rounded-[25px] border border-[blue] mt-[30px] flex justify-center items-center text-white bg-black hover:cursor-pointer hover:scale-[1.1] ">
               <div className="font-[700] text-[13px] ml-2">Continue</div>
             </div>
           </div>
+
 
           <div className="w-full  justify-center items-center text-center flex flex-col text-[11px] mt-3">
             Rate My Professors is designed for and targeted to U.S. audiences
@@ -132,8 +137,10 @@ const SignIn = () => {
           </div>
 
           <div className="my-7">
-            Already have an account?
-            <span className="text-blue-700 font-[700] ml-1">Login</span>
+            Don't have an account?
+            <Link to="/">
+            <span className="text-blue-700 cursor-pointer font-[700] ml-1">Sign in</span>
+            </Link>
           </div>
         </div>
       </div>

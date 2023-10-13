@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState<boolean>(false);
@@ -114,7 +115,10 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
           <div className="my-7">
             Already have an account?
-            <span className="text-blue-700 font-[700] ml-1">Login</span>
+            <Link to="/sign-in">
+              <span className="text-blue-700 font-[700] ml-1">Login</span>
+            </Link>
+            
           </div>
         </div>
       </div>
