@@ -1,9 +1,11 @@
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const [parent] = useAutoAnimate()
   const [email, setEmail] = useState<boolean>(false);
 
   const onEmail = () => {
@@ -16,25 +18,14 @@ const Register = () => {
   };
   return (
     <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10" 
-    // style={{background : "rgba( 155, 155, 155, 0.1 )", boxShadow : " 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )", backdropFilter : "blur( 20px ) ", WebkitBackdropFilter: "blur( 6.5px )", borderRadius : "10px", border: "1px solid rgba( 255, 255, 255, 0.18 )" , }}
     
     >
-      {/* 
- 
-
-background: rgba( 155, 155, 155, 0 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 20px );
--webkit-backdrop-filter: blur( 20px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
       
-      */}
-      {/* form the body */}
       <div className="w-[90%] tab:w-[550px] bg-white  p-3 desktop:flex desktop:justify-center desktop:items-center desktop:flex-col shadow-2xl"
       onClick={()=>{
         onEmail2()
       }}
+      
       >
         <div className="text-[27px] flex justify-end cursor-pointer desktop:justify-end desktop:flex desktop:w-full ">
           <GrFormClose />
@@ -51,7 +42,9 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
           {/* Professor routes/Link */}
           <div className="my-5">
             Are you a professor?
-            <span className="text-blue-700 font-[700] ml-1">Sign up here</span>
+            <Link to="/prof">
+            <span className="text-blue-700 font-[700] ml-1 cursor-pointer">Sign up here</span>
+            </Link>
           </div>
 
           {/* google sign up w-[350px] */}
@@ -68,18 +61,18 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
           {/* options */}
           <div className="w-full flex justify-between items-center mt-7">
             <div className="w-[30%] desktop:w-[25%] h-[1px] bg-gray-300"></div>
-            <div className="text-[13px] desktop:text-[15px] ">
+            <div className="text-[10px] desktop:text-[15px] ">
               Or sign up with email
             </div>
             <div className="w-[30%] desktop:w-[25%] h-[1px] bg-gray-300"></div>
           </div>
 
           {/* form */}
-          <div className="mt-6 w-full">
+          <div className="mt-6 w-full ">
             {/* input */}
-            <div className="ml-1 font-[600] text-[16px] duration-[300ms] h-[10px] mb-5">
+            <div className="ml-1 font-[600] text-[16px] h-[10px] mb-5 duration-[200ms]">
             {email ? (
-              <div className="duration-[350ms]">
+              <div className="">
                 Email
               </div>
             ) : null}
