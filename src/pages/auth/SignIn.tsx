@@ -2,8 +2,10 @@ import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
 import { Link } from "react-router-dom";
+import {useAutoAnimate} from "@formkit/auto-animate/react"
 
 const SignIn = () => {
+  const [parent]  = useAutoAnimate()
   const [email, setEmail] = useState<boolean>(false);
   const [password, setPassword] = useState<boolean>(false);
 
@@ -24,7 +26,7 @@ const SignIn = () => {
     }
   };
   return (
-    <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10">
+    <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10" ref={parent}>
       {/* form the body */}
       <div className="w-[90%] tab:w-[550px] bg-white  p-3 desktop:flex desktop:justify-center desktop:items-center desktop:flex-col shadow-2xl"
       onClick={()=>{
@@ -58,7 +60,7 @@ const SignIn = () => {
           {/* options */}
           <div className="w-full flex justify-between items-center mt-7">
             <div className="w-[30%] desktop:w-[25%] h-[1px] bg-gray-300"></div>
-            <div className="text-[13px] desktop:text-[15px] ">
+            <div className="text-[10px] desktop:text-[15px] ">
               Or Login with email
             </div>
             <div className="w-[30%] desktop:w-[25%] h-[1px] bg-gray-300"></div>
@@ -105,7 +107,7 @@ const SignIn = () => {
             </div>
             {!password ? (
               <input
-                type="text"
+                type="password"
                 placeholder="Password"
                 className="w-full h-[40px] bg-white border border-gray-300 px-4 placeholder:text-black outline-0"
                 onClick={() => {
@@ -114,7 +116,7 @@ const SignIn = () => {
               />
             ) : (
               <input
-                type="text"
+                type="password"
                 className="w-full h-[40px] bg-white border border-black px-4 outline-0"
                 onClick={() => {
                   onPassword();
@@ -139,7 +141,7 @@ const SignIn = () => {
           <div className="my-7">
             Don't have an account?
             <Link to="/">
-            <span className="text-blue-700 cursor-pointer font-[700] ml-1">Sign in</span>
+            <span className="text-blue-700 cursor-pointer font-[700] ml-1">Sign Up</span>
             </Link>
           </div>
         </div>
