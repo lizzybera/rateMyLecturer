@@ -30,7 +30,7 @@ const Header = () => {
     }
  
   return (
-    <div className="w-full h-[65px] bg-black text-white justify-center items-center flex">
+    <div className="w-full h-[65px] bg-black text-white justify-center items-center flex fixed">
         
 {/* main */}
         <div className="w-[95%] flex items-center justify-between">
