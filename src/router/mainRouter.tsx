@@ -4,10 +4,15 @@ import SignIn from "../pages/auth/SignIn"
 import ProfSignUp from "../pages/prof/profSignUp"
 import LayOut from "../components/common/LayOut"
 import ProfMainSign from "../pages/prof/ProfMainSign"
+import Home from "../pages/Home"
 
 export const mainRouter = createBrowserRouter ([
     {
         path : "/",
+        element : <Home />
+    },
+    {
+        path : "/register",
         element : <Register />
     },
     {
