@@ -70,7 +70,7 @@ const ProfSignUp = () => {
             <div className="my-1">
             Can't find your profile? 
 
-            <Link to="">
+            <Link to="/prof/signup">
             <span className="text-blue-700 cursor-pointer font-[700] ml-1">Create one here</span>
             </Link>
           </div>
