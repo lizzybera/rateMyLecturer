@@ -48,7 +48,7 @@ const ProfSignUp = () => {
             
             {!password ? (
               <input
-                type="password"
+                // type="password"
                 className="w-full h-[40px] bg-white border border-gray-300 px-4 placeholder:text-black outline-0"
                 onClick={() => {
                   onPassword();
@@ -56,7 +56,7 @@ const ProfSignUp = () => {
               />
             ) : (
               <input
-                type="password"
+                // type="password"
                 className="w-full h-[40px] bg-white border border-black px-4 outline-0"
                 onClick={() => {
                   onPassword();
