@@ -4,6 +4,14 @@ import {FaGraduationCap} from 'react-icons/fa'
 import { IconContext } from "react-icons";
 
 const DropDown = () => {
+    const listOfProfessors = [
+        {
+            id: "1",
+            name: "Henry Omofonmwan",
+            dept: "computer science",
+            college: "funnab"
+        }
+    ]
     return (
         <div className={styles.parentContainer}>
             <div className={styles.inputContainer}>
