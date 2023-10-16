@@ -3,6 +3,7 @@ import pics2 from "../../assets/apple logo.svg"
 import pics3 from "../../assets/dropdown main.svg"
 import pics4 from "../../assets/apple black.png"
 import {RiGraduationCapFill} from "react-icons/ri"
+import {AiOutlineSearch, AiOutlineMenu} from "react-icons/ai"
 import { useState } from "react"
 
 const Header = () => {
@@ -34,11 +35,14 @@ const Header = () => {
 {/* main */}
         <div className="w-[95%] flex items-center justify-between">
 
+            <div className=" text-[20px] headerLarge:flex hidden"><AiOutlineMenu /> </div>
+
                 {/* logo / search */}
         <div className="flex h-full items-center">
             {/* logo */}
             <img className="mr-12" src={pics} alt="logo"/>
 
+            <div className="ml-7 flex headerLarge:hidden">
             {
                 show2 ?
                     //  search1 
@@ -47,56 +51,59 @@ const Header = () => {
 
                  <div className="flex items-center cursor-pointer"> 
                
-                <div className="flex"
+                <div className="flex items-center"
                onClick={()=>{
                 onDropDown()
                 onShow()
                }}
                >
-               <img src={pics2} alt="logo" />
+               <img src={pics2} alt="logo" className="" />
 
-<span className="text-[18px] ml-1">Professors</span>
-               </div> 
+<span className="text-[19px] ml-1 mt-1">Professors</span>
+               
 
                  {
                     show ? (
-                        <img src={pics3} alt="dropdown" className="ml-3 "/>
+                        <img src={pics3} alt="dropdown" className="ml-3"/>
                     ) : (
                         <img src={pics3} alt="dropdown" className="ml-3 rotate-180"/>
                     )
                 } 
+                </div> 
 
                  {/* search bar  */}
 
-                 <div className="flex ml-10 text-black">
+                 <div className="flex ml-10 smallLaptop:ml-5 tablet:ml-4 text-black">
 
                     <input type="text"
-                    placeholder="professor name" className="w-[350px] h-[40px] rounded-full px-5 outline-none" />
+                    placeholder="professor name" className="w-[350px] h-[40px] rounded-full px-5 outline-none desktop:ml-1 smallLaptop:ml-1" />
 
                     <input type="text"
-                    placeholder="professor name" className="w-[350px] h-[40px] rounded-full px-5 ml-5 outline-none" />
+                    placeholder="professor name" className="w-[350px] h-[40px] rounded-full px-5 ml-5 desktop:ml-1 outline-none smallLaptop:ml-1" />
 
                 </div> 
                 
                  </div> 
 
+                 {/* <div>search</div> */}
+
              </div> 
                ) : (
-                <div className="flex justify-center items-center h-full">
+                <div className="flex justify-center items-center h-full tablet:hidden">
 
                 <div className="flex items-center cursor-pointer">
                
-               <div className="flex justify-center items-center"
+               <div className="flex items-center"
                onClick={()=>{
                 onDropDown2()
                 onShow()
                }}
                >
                {/* <img src={pics2} alt="logo" />  */}
-               <div className="text-[20px] "><RiGraduationCapFill /></div>
+               <div className="text-[20px] smallLaptop:hidden"><RiGraduationCapFill /></div>
 
-<span className="text-[18px] ml-1">School</span>
-               </div> 
+<span className="text-[19px] ml-1 mt-1">School</span>
+                
 
                 {
                     !show ? (
@@ -105,13 +112,14 @@ const Header = () => {
                         <img src={pics3} alt="dropdown" className="ml-3 rotate-180"/>
                     )
                 } 
+                </div>
 
                 {/* search bar  */}
 
-                <div className="flex ml-5 text-black">
+                <div className="flex ml-5 desktop:ml-2 text-black">
 
                     <input type="text"
-                    placeholder="Your School" className="w-[350px] h-[40px] rounded-full px-5 outline-none" />
+                    placeholder="Your School" className="w-[750px] h-[40px] rounded-full px-5 outline-none smallLaptop:w-[740px]" />
 
                 </div>
                 
@@ -125,7 +133,7 @@ const Header = () => {
 {/* dropdown for school */}
 {
                 dropdown ? (
-                    <div className="w-[180px] h-[65px] bg-white absolute left-[150px] hover:bg-[blue]  shadow-lg top-[55px] flex items-center px-4 rounded-md cursor-pointer  text-black hover:text-white font-[500]"
+                    <div className="w-[180px] h-[65px] bg-white absolute left-[150px] smallLaptop:left-[100px] hover:bg-[blue]  shadow-lg top-[55px] flex items-center px-4 rounded-md cursor-pointer  text-black hover:text-white font-[500]"
                     onClick={()=>{
                         onDropDown()
                         onShow2()
@@ -147,7 +155,7 @@ const Header = () => {
             {/* dropdown for professor */}
             {
                 dropdown2 ? (
-                    <div className="w-[180px] h-[65px] bg-white absolute left-[150px] hover:bg-[blue]  shadow-lg top-[55px] flex items-center px-4 rounded-md cursor-pointer  text-black hover:text-white font-[500]"
+                    <div className="w-[180px] h-[65px] bg-white absolute left-[150px] hover:bg-[blue] smallLaptop:left-[100px] shadow-lg top-[55px] flex items-center px-4 rounded-md cursor-pointer  text-black hover:text-white font-[500]"
                     onClick={()=>{
                         onShow2()
                         onDropDown2()
@@ -165,11 +173,12 @@ const Header = () => {
             </div>
                 ) : null
             }
+            </div>
 
         </div>
 
                 {/* buttons */}
-        <div className="flex">
+        <div className="flex headerLarge:hidden">
             {/* login */}
             <div className="text-[15px] font-[500] rounded-full h-[30px] px-3 cursor-pointer hover:bg-gray-900 flex justify-center items-center">
                 Log in
@@ -180,6 +189,12 @@ const Header = () => {
                 Sign in
             </div>
         </div>
+
+        <div className="hidden headerLarge:flex"><AiOutlineSearch /></div>
+
+        {/* <div>jjjj</div> */}
+
+       
         </div>
 
     </div>
