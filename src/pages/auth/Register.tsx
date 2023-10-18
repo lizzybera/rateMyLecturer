@@ -3,8 +3,12 @@ import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
 import { Link } from "react-router-dom";
+import { changedToggle } from "../../global/GlobalState";
+import { useDispatch} from "react-redux";
 
 const Register = () => {
+  const dispatch = useDispatch();
+
   const [parent] = useAutoAnimate()
   const [email, setEmail] = useState<boolean>(false);
 
@@ -17,7 +21,7 @@ const Register = () => {
     }
   };
   return (
-    <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10" 
+    <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10 fixed text-black z-[100]" 
     
     >
       
@@ -27,8 +31,12 @@ const Register = () => {
       }}
       
       >
-        <div className="text-[27px] flex justify-end cursor-pointer desktop:justify-end desktop:flex desktop:w-full ">
-          <GrFormClose />
+        <div className="text-[27px] flex justify-end cursor-pointer desktop:justify-end desktop:flex desktop:w-full "
+        onClick={()=>{
+          dispatch(changedToggle())
+        }}
+        >
+          <GrFormClose/>
         </div>
 
         {/* main part */}

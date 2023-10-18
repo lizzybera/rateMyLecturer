@@ -3,8 +3,11 @@ import { FcGoogle } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import {useAutoAnimate} from "@formkit/auto-animate/react"
+import { useDispatch} from "react-redux";
+import { changedToggle2 } from "../../global/GlobalState";
 
 const SignIn = () => {
+  const dispatch = useDispatch()
   const [parent]  = useAutoAnimate()
   const [email, setEmail] = useState<boolean>(false);
   const [password, setPassword] = useState<boolean>(false);
@@ -26,7 +29,7 @@ const SignIn = () => {
     }
   };
   return (
-    <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10" ref={parent}>
+    <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10 fixed  text-black z-[100]" ref={parent}>
       {/* form the body */}
       <div className="w-[90%] tab:w-[550px] bg-white  p-3 desktop:flex desktop:justify-center desktop:items-center desktop:flex-col shadow-2xl"
       onClick={()=>{
@@ -34,7 +37,11 @@ const SignIn = () => {
         onPassword2()
       }}
       >
-        <div className="text-[27px] flex justify-end cursor-pointer desktop:justify-end desktop:flex desktop:w-full ">
+        <div className="text-[27px] flex justify-end cursor-pointer desktop:justify-end desktop:flex desktop:w-full "
+        onClick={()=>{
+          dispatch(changedToggle2())
+        }}
+        >
           <GrFormClose />
         </div>
 
