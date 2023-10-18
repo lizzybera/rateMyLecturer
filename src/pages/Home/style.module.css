@@ -61,6 +61,39 @@ header {
     text-align: center;
 }
 
+.newDropDown {
+    background: white;
+    position: absolute;
+    width: 42%;
+    height: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  top: 450px;
+  right: 400px;
+    z-index: 999;
+    box-shadow: 7px 10px 9px -3px rgba(84,84,84,0.75);
+-webkit-box-shadow: 7px 10px 9px -3px rgba(84,84,84,0.75);
+-moz-box-shadow: 7px 10px 9px -3px rgba(84,84,84,0.75);
+border-radius: 25px;
+}
+
+.newDropDown input {
+    position: fixed;
+}
+
+.newDropDown::-webkit-scrollbar {
+	width: 4px;
+	background-color: white;
+}
+
+.newDropDown::-webkit-scrollbar-thumb {
+	background-color: #464646;
+}
+
+.newDropDown::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: white;
+}
 
 
 

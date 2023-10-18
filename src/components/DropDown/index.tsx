@@ -10,7 +10,14 @@ const DropDown = () => {
             name: "Henry Omofonmwan",
             dept: "computer science",
             college: "funnab"
+        }, 
+        {
+            id: "1",
+            name: "Henry Omofonmwan",
+            dept: "computer science",
+            college: "funnab"
         }
+
     ]
     return (
         <div className={styles.parentContainer}>
@@ -25,6 +32,7 @@ const DropDown = () => {
                 </div>
                 <input placeholder="Your School"/>
             </div>
+            
         </div>
     )
 }
