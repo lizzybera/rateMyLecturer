@@ -11,10 +11,9 @@ const Footer = () => {
 
     const onShow = () =>{
         setShow(!show)
-
     }
   return (
-    <div ref={parent}>
+    <div ref={parent} className="duration-700">
 
         {
             !show ? (
