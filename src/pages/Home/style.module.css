@@ -61,10 +61,129 @@ header {
     text-align: center;
 }
 
+.newDropDown {
+    background: white;
+    position: absolute;
+   
+    width: 42%;
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  top: 400px;
+  right: 400px;
+    z-index: 99;
+    box-shadow: 7px 10px 9px -3px rgba(84,84,84,0.75);
+-webkit-box-shadow: 7px 10px 9px -3px rgba(84,84,84,0.75);
+-moz-box-shadow: 7px 10px 9px -3px rgba(84,84,84,0.75);
+border-radius: 25px;
+}
 
+/* .newDropDownContainer {
+    position: relative;
+} */
+
+.newInputContainer {
+    width: 100%;
+ position: sticky;
+ top: 0; 
+ left: 10; 
+  align-items: center;
+    display: flex;
+    background: white;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 5px 20px;
+    z-index: 999;
+
+}
+
+.newDropDown input {
+    width: 80%;
+    outline: none;
+    padding: 10px 0;
+    margin-left: 10px;
+  
+   
+
+}
+
+.newDropDown::-webkit-scrollbar {
+	width: 4px;
+	background-color: white;
+}
+
+.newDropDown::-webkit-scrollbar-thumb {
+	background-color: #464646;
+}
+
+.newDropDown::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: white;
+}
+
+.parentListContainer {
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 19px;
+}
+
+.secondContainer {
+    margin-left: 10px;
+}
+
+.secondContainer h1 {
+    font-weight: 700;
+}
+
+.parentListContainer:hover {
+    background: #0021ff;
+    transition: all 0.5s;
+}
+
+.secondContainerHolder {
+    display: flex;
+}
+
+.listDepartment {
+    color: #b4b4b4;
+}
+
+.dotCover {
+    margin: 0 10px;
+}
+
+.listCollege {
+    color: #252525;
+}
+
+.contactIcon:hover {
+    fill: #f2f735;}
+    .changeColor {
+        color: black;
+      }
+      .parentListContainer:hover ~ .changeColor {
+        color: white;
+      }
+
+      .parentListContainer:hover > .firstContainer {
+        color: white;
+      }
+
+      .parentListContainer:hover > .secondContainer {
+        color: white;
+      }
+
+      .parentListContainer:hover > .secondContainer p {
+        color: white;
+      }
 
 
 @media screen and (max-width: 800px) {
+    .newDropDown {
+        left: 10%;
+        top: 70%;
+        width: 80%;
+    }
     .ratingCover img {
         width: 70%;
     }
