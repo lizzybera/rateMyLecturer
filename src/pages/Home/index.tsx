@@ -1,15 +1,45 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import styles from './style.module.css'
 import rateLogo from "../../assets/rate-logo.svg"
 import { FaUniversity } from "react-icons/fa"
 import { BiSolidSchool } from "react-icons/bi"
+import { AiOutlineSearch } from "react-icons/ai"
 import { IconContext } from "react-icons";
 import DropDown from '../../components/DropDown'
+import {LiaAppleAltSolid} from "react-icons/lia"
 
 const Home = () => {
-    const [profInput, setProfInput] = useState("")
+    const [profileInput, setProfileInput] = useState("")
+     const listOfProfessors = [
+        {
+            id: "1",
+            name: "Henry Omofonmwan",
+            dept: "computer science",
+            college: "funnab"
+        }, 
+        {
+            id: "1",
+            name: "Henry Omofonmwan",
+            dept: "lola",
+            college: "funnab"
+        },
+        {
+            id: "3",
+            name: "James odasi",
+            dept: "computer science",
+            college: "funnab"
+        },
+        {
+            id: "4",
+            name: "James odasi",
+            dept: "computer science",
+            college: "funnab"
+        },
+
+    ]
     return (
-        <div style={{position: 'relative'}}>
+        <div style={{ position: 'relative' }}>
+               <div className={styles.newDropDownContainer}>
             <header>
                 <section className={styles.heroHeader}>
                     <div className={styles.ratingCover}>
@@ -35,16 +65,61 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
-                
-                <DropDown profInput={profInput} setProfInput={setProfInput} />
-              
-                
+                {profileInput.length < 1 && (
+                    <DropDown profileInput={profileInput} setProfileInput={setProfileInput} />
+                )}
+
             </header>
-            <div className={styles.newDropDown} id="style-1">
-             <input placeholder='enter ' />
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut accusamus repellat unde tempora, voluptatibus ratione atque, beatae magnam neque fugit vero iste illum mollitia aliquid, delectus eum explicabo eveniet odit! Nesciunt aspernatur sequi impedit repudiandae rem repellendus, quam aperiam necessitatibus delectus ab eligendi dolor iure enim fugiat. Ipsum numquam explicabo veritatis mollitia, facilis beatae? Animi dolores quas explicabo veritatis iusto, cupiditate accusamus neque nulla laudantium magni beatae aperiam corporis obcaecati eius consectetur eveniet, harum, maiores minima! Omnis blanditiis fuga eius, laboriosam obcaecati reprehenderit error, necessitatibus aspernatur aliquam mollitia molestiae impedit quisquam quibusdam odio sit dolore ipsam ullam libero. Nisi ab sapiente quos eius mollitia laboriosam deleniti, qui deserunt perspiciatis optio, adipisci, debitis accusantium assumenda at voluptatibus sit omnis ullam sequi exercitationem quisquam error ut enim voluptatum? Impedit eius quibusdam maiores incidunt fugiat perferendis assumenda officiis facilis nostrum repellat expedita laborum nam ipsam, minus perspiciatis deserunt omnis, id molestias debitis minima voluptatum ducimus veritatis ut recusandae? Minus vero tenetur iusto nostrum odit, laudantium temporibus dolorem minima quasi delectus fugiat fugit a, praesentium nisi magni? Beatae delectus mollitia ea libero voluptatum vitae quidem esse soluta eius. Consequuntur eum fugit, magni eligendi blanditiis, in dolor libero voluptate ut architecto provident dolorem consectetur nesciunt odio corporis quam recusandae natus. Dolorum magni aliquid recusandae? Assumenda, accusantium quod qui unde ad laboriosam provident beatae aperiam aspernatur soluta, dicta, saepe similique consectetur delectus deserunt! Repudiandae deleniti totam dicta saepe eos impedit, quisquam alias minus commodi quod, veniam dolorem nesciunt fugiat, ducimus iusto perferendis vitae ut quaerat corrupti. In harum, eius ex quasi eligendi quo recusandae blanditiis veniam impedit natus! Delectus, facere odit officiis neque doloribus ea eligendi doloremque totam expedita nihil repellat accusamus animi inventore quas non quibusdam, eius ut et sunt fugiat quae! Ratione sequi consectetur a sint. A tenetur qui quibusdam alias tempora fugit voluptatibus inventore libero quasi praesentium placeat voluptate repellendus et natus facere, ad dolore provident minus odit vitae quae. Vitae aspernatur assumenda fuga, aut dicta facilis quidem ipsa, eius cum minima quam. Autem, corporis? Hic esse sint temporibus aut odio corporis vitae unde obcaecati, placeat odit libero itaque animi. Rerum iste saepe laboriosam nesciunt aliquam in! Tempore magnam culpa amet et. Non laudantium voluptas porro maiores possimus nostrum id, nisi facilis corporis quidem ipsa? Laboriosam obcaecati maxime commodi voluptatibus porro quibusdam, iste officia? Fuga aliquid, laudantium facere enim magnam beatae, corrupti libero rerum earum dolor soluta similique aut minima perspiciatis debitis suscipit cupiditate tenetur ducimus commodi ex. Excepturi sed aliquam ipsum voluptatem molestiae, rerum laudantium totam, dolore repellendus sequi aspernatur enim quis optio nihil molestias, neque officiis rem? Modi maiores eum exercitationem voluptatem iusto ipsa esse molestiae hic, corrupti provident, inventore nihil neque aliquid repellat doloremque amet perspiciatis ipsam enim placeat quia porro quis omnis at error. Vitae, officiis enim? Incidunt expedita quo labore minus doloribus ad accusantium perferendis quia laboriosam! Quam, asperiores sit est corporis magni totam, sed quia placeat deserunt cum aliquid ipsa accusamus nesciunt rem architecto laborum quibusdam id quaerat reiciendis veniam nemo, explicabo autem! Vel debitis eveniet eum.</p>
-            </div>
+            {profileInput.length > 0 && (
+             
+                      <div className={styles.newDropDown} id="style-1">
+                        
+                    <div className={styles.newInputContainer}>
+                    <IconContext.Provider
+                                value={{ color: 'black', size: '20px' }}
+                            >
+                                <AiOutlineSearch />
+                            </IconContext.Provider>
+                            <input placeholder='Enter Professor Name' value={profileInput} onChange={(e) => setProfileInput(e.target.value)} />
+                
+                    </div>
+                {listOfProfessors?.map((list: any) => {
+return (
+
+    <div className={styles.parentListContainer}>
+        <div className={styles.firstContainer}>
        
+                                <span className="changeColor">
+                                <IconContext.Provider
+                                value={{  size: '30px' }}
+                            >
+                                <LiaAppleAltSolid   
+                                onMouseOver={({target})=>target.style.color="white"}
+    onMouseOut={({target})=>target.style.color="black"}/>
+      </IconContext.Provider>
+                                </span>
+                           
+        </div>
+        <div className={styles.secondContainer}>
+        <h1>{list.name}</h1>
+        <div className={styles.secondContainerHolder}>
+            <p className={styles.listDepartment}>{list.dept}</p>
+            <p className={styles.dotCover}>.</p>
+            <p className={styles.listCollege}>{list.college}</p>
+        </div>
+        </div>
+      
+    </div>
+)
+                })}
+                
+                </div>
+
+              
+            )}
+
+</div>
+
         </div>
     )
 }

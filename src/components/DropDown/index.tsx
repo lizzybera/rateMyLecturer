@@ -3,7 +3,12 @@ import styles from "./styles.module.css"
 import {FaGraduationCap} from 'react-icons/fa'
 import { IconContext } from "react-icons";
 
-const DropDown = () => {
+interface Props {
+    profileInput: string;
+    setProfileInput: any;
+  }
+
+const DropDown = ({profileInput, setProfileInput} : Props) => {
     const listOfProfessors = [
         {
             id: "1",
@@ -14,9 +19,21 @@ const DropDown = () => {
         {
             id: "1",
             name: "Henry Omofonmwan",
+            dept: "lola",
+            college: "funnab"
+        },
+        {
+            id: "3",
+            name: "James odasi",
             dept: "computer science",
             college: "funnab"
-        }
+        },
+        {
+            id: "4",
+            name: "James odasi",
+            dept: "computer science",
+            college: "funnab"
+        },
 
     ]
     return (
@@ -30,7 +47,11 @@ const DropDown = () => {
                             </IconContext.Provider>
 
                 </div>
-                <input placeholder="Your School"/>
+                <input 
+                placeholder="Your School" 
+                value={profileInput} 
+                onChange={(e) => setProfileInput(e.target.value)}
+                />
             </div>
             
         </div>
