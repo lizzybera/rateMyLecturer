@@ -5,11 +5,12 @@ import ProfSignUp from "../pages/prof/profSignUp"
 import LayOut from "../components/common/LayOut"
 import ProfMainSign from "../pages/prof/ProfMainSign"
 import Home from "../pages/Home"
+import FrontPage from "../pages/frontPage"
 
 export const mainRouter = createBrowserRouter ([
     {
         path : "/",
-        element : <Home />
+        element : <FrontPage />
     },
     {
         path : "/register",

@@ -1,0 +1,98 @@
+.rpmParentContainer {
+    text-align: center;
+    height: 120vh;
+    color: rgb(21, 21, 21);
+    font-family: Poppins, sans-serif;
+    padding: 50px 0;
+  }
+
+  .rpmParentContainer h1 {
+    font-size: 32px; 
+    font-weight: 900;
+  }
+
+  .rpmParentContainer h3 {
+    font-size: 26px; 
+    font-weight: 400;
+  }
+
+
+
+  .rmpContainer {
+    background-image: url("/src/assets/blob.svg");
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    height: 70%;
+  }
+
+  .rmpSubContainer img {
+    width: 70%;
+  }
+
+  .rmpSubContainer {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .rmpSubContainer h2 {
+    font-size: 26px;
+line-height: 26px;
+margin: 0px auto;
+max-width: 300px;
+text-align: center;
+font-family: Poppins, sans-serif;
+font-weight: 700;
+  }
+
+  .signUpButton {
+    margin: 0px auto;
+max-width: 196px;
+min-width: 196px;
+text-decoration: none;
+background: black;
+border: 1px solid rgb(0, 33, 255);
+border-radius: 100px;
+color: white;
+display: flex;
+font-stretch: normal;
+font-weight: 700;
+-webkit-box-pack: center;
+justify-content: center;
+letter-spacing: normal;
+background: black;
+line-height: 1.54;
+outline: none;
+padding: 12px 46px;
+transition: transform 0.2s ease 0s;
+font-size: 0.9rem;
+  }
+
+  @media screen and (max-width: 800px) {
+    .rpmParentContainer h1 {
+        font-size: 27px;
+    }
+    .rpmParentContainer h3 {
+        font-size: 20px;
+    }
+    .rmpSubContainer h2 {
+        font-size: 20px;
+    }
+    .rpmParentContainer {
+        height: 130vh;
+    }
+    .rmpSubContainer img {
+        width: 40%;
+    }
+    .rmpSubContainer {
+        width: 100%;
+    }
+    .rmpContainer {
+        flex-direction: column;
+        height: 100%;
+    }
+  }
