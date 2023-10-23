@@ -4,7 +4,7 @@ import SignIn from "../pages/auth/SignIn"
 import ProfSignUp from "../pages/prof/profSignUp"
 import LayOut from "../components/common/LayOut"
 import ProfMainSign from "../pages/prof/ProfMainSign"
-import Home from "../pages/Home"
+import RateAProf from "../pages/RateAProf"
 import FrontPage from "../pages/frontPage"
 
 export const mainRouter = createBrowserRouter ([
@@ -31,6 +31,17 @@ export const mainRouter = createBrowserRouter ([
             {
                 index : true,
                 element : <ProfMainSign />
+            }
+
+        ]
+    },
+    {
+        path : "/rate-a-professor",
+        element : <LayOut  />,
+        children : [
+            {
+                index : true,
+                element : <RateAProf />
             }
 
         ]

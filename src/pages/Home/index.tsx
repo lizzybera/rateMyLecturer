@@ -114,7 +114,10 @@ const Home = () => {
                         {listOfProfessors?.map((list: any) => {
                             return (
 
-                                <div className={styles.parentListContainer}>
+                                <div 
+                                className={styles.parentListContainer} 
+                                onClick={() => navigate("/rate-a-professor")}
+                                >
                                     <div className={styles.firstContainer}>
 
                                         <span className="changeColor">
