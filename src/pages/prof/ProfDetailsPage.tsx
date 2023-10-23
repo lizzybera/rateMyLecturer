@@ -1,4 +1,7 @@
 import Header from "../../components/common/Header"
+import {AiOutlineLike, AiOutlineDislike}  from "react-icons/ai"
+import {GoShare} from "react-icons/go"
+import {GrFlag} from "react-icons/gr"
 
 
 const ProfDetailsPage = () => {
@@ -115,7 +118,7 @@ const ProfDetailsPage = () => {
 
 
 {/* courses ratings */}
-<div className="mt-7 w-[73%]">
+<div className="mt-7 w-[73%] headerMedium:w-full">
     <div className="hover:text-gray-500 cursor-pointer">
     <div className="text-[15px] font-[700] mb-3">58 students Rating</div>
     <div className="w-[150px] h-[2px] bg-black hover:text-gray-500"></div>
@@ -130,16 +133,21 @@ const ProfDetailsPage = () => {
 
     {/* rating words */}
     
-    <div className="w-full bg-gray-400 p-8 mb-5 flex">
+    <div className="w-full bg-[#F9F9F9] p-8 mb-5 flex headerMedium:flex-col">
+
+    <div className="headerMedium:flex justify-between mb-5 ml-4 hidden">
+                <div className="font-[700]">PHIL100</div>
+                <div className="font-[600] text-[14px]">27 march 2020</div>
+                </div>
 
 {/* RATES */}
-        <div>
+        <div className="headerMedium:flex">
             <div className="flex justify-center flex-col items-center w-[100px]">
-                <div className="font-[600]">QUALITY</div>
+                <div className="font-[600] headerMedium:text-[16px]">QUALITY</div>
                 <div className="w-[75px] text-[30px] font-[800] h-[60px] flex justify-center items-center bg-[#7FF6C3]">4.0</div>
         </div>
-            <div className="flex justify-center flex-col items-center w-[100px] mt-8">
-                <div className="font-[600]">DIFFICULTY</div>
+            <div className="flex justify-center flex-col items-center w-[100px] mt-8 headerMedium:mt-0">
+                <div className="font-[600] headerMedium:text-[16px]">DIFFICULTY</div>
                 <div className="w-[75px] text-[30px] font-[800] h-[60px] flex justify-center items-center bg-[#7FF6C3]">4.0</div>
         </div>
             
@@ -148,39 +156,45 @@ const ProfDetailsPage = () => {
         </div>
 
 {/* WORDS */}
-        <div className="ml-8">
+        <div className="ml-8 headerMedium:ml-3">
             <div className="mt-2">
-                <div className="flex justify-between">
+                <div className="flex justify-between headerMedium:hidden">
                 <div className="font-[700]">PHIL100</div>
                 <div className="font-[600] text-[14px]">27 march 2020</div>
                 </div>
 
 {/* grade level */}
-                <div className="mt-4 flex">
-                    <div className="text-[16px]">For Credit: <span className="font-[700] mr-5">YES</span></div>
+                <div className="mt-4  headerMedium:mt-6 flex headerMedium:flex-col  ">
+                    <div className="text-[16px] headerMedium:mb-2 headerMedium:text-[15px]">For Credit: <span className="font-[700] mr-5 ">YES</span></div>
 
-                    <div className="text-[16px]">Grade <span className="font-[700] mr-5">YES</span></div>
+                    <div className="text-[16px] headerMedium:mb-2 headerMedium:text-[15px]">Grade <span className="font-[700] mr-5">YES</span></div>
 
-                    <div className="text-[16px]">TextBook: <span className="font-[700] mr-5">YES</span></div>
+                    <div className="text-[16px] headerMedium:mb-2 headerMedium:text-[15px]">TextBook: <span className="font-[700] mr-5">YES</span></div>
 
-                    <div className="text-[16px]">Attendance: <span className="font-[700] mr-5">YES</span></div>
+                    <div className="text-[16px] headerMedium:mb-2 headerMedium:text-[15px]">Attendance: <span className="font-[700] mr-5">YES</span></div>
                 </div>
 
 {/* comment */}
-                <div className="text-[15px] mt-7" >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis aspernatur quod laboriosam commodi? Voluptates magnam itaque consequatur quasi aliquam laborum! Sit vel iste voluptate doloremque dolores dignissimos suscipit fuga? Iure.</div>
+                <div className="text-[15px] mt-7 headerMedium:mt-5 headerMedium:text-[14px]" >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis aspernatur quod laboriosam commodi? Voluptates magnam itaque consequatur quasi aliquam laborum! Sit vel iste voluptate doloremque dolores dignissimos suscipit fuga? Iure.</div>
 
 {/* likes and unlike etc */}
                 <div className="flex justify-between mt-8">
 
-                    <div className="flex font-[700] text-[15px]">
+                    <div className="flex font-[700] text-[15px] items-center justify-center">
                         <div>Helpful</div>
-                        <div> ..... 1</div>
-                        <div className="ml-5"> ..... 1</div>
+                        <div className="flex text-[25px]"> 
+                            <AiOutlineLike /> 
+                            <div className="text-[18px]">1</div>
+                        </div>
+                        <div className="flex text-[25px] ml-5"> 
+                            <AiOutlineDislike /> 
+                            <div className="text-[18px]">1</div>
+                        </div>
                     </div>
 
-                    <div className="flex">
-                        <div>1</div>
-                        <div className="ml-5">2</div>
+                    <div className="flex text-[25px]">
+                        <div><GoShare /></div>
+                        <div className="ml-5 text-[20px]"><GrFlag /></div>
                     </div>
                 </div>
 
@@ -188,6 +202,7 @@ const ProfDetailsPage = () => {
         </div>
 
     </div>
+    
     
 </div>
 
