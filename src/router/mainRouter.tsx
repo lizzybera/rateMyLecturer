@@ -6,6 +6,7 @@ import LayOut from "../components/common/LayOut"
 import ProfMainSign from "../pages/prof/ProfMainSign"
 import RateAProf from "../pages/RateAProf"
 import FrontPage from "../pages/frontPage"
+import ProfDetailsPage from "../pages/prof/ProfDetailsPage"
 
 export const mainRouter = createBrowserRouter ([
     {
@@ -23,6 +24,10 @@ export const mainRouter = createBrowserRouter ([
     {
         path : "/prof",
         element : <ProfSignUp />
+    },
+    {
+        path : "/pp",
+        element : <ProfDetailsPage />
     },
     {
         path : "/prof/signup",
