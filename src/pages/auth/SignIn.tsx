@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {useAutoAnimate} from "@formkit/auto-animate/react"
 import { useDispatch} from "react-redux";
 import { changedToggle2 } from "../../global/GlobalState";
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form"
-import { studentSignIn } from "../../api/studentApis";
+import { studentSignIn, studentVerify } from "../../api/studentApis";
 
 const SignIn = () => {
+  const {userID, token} = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [parent]  = useAutoAnimate()
@@ -49,9 +50,17 @@ const SignIn = () => {
     
     
     studentSignIn({email, password}).then((res : any) =>{
-      console.log("handleRes", res);
-      navigate("/")
+      // console.log("handleRes", res);
+      if(res){
+        navigate("/")
+      }
     })
+  })
+
+  useEffect(()=>{
+    if(userID && token){
+      studentVerify(userID,token)
+    }
   })
 
   return (

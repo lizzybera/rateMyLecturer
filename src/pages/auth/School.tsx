@@ -17,6 +17,9 @@ const School = () => {
   const [school, setSchool] = useState<boolean>(false);
   const [schooled, setSchooled] = useState<any>();
 
+  const [name, setName] = useState<boolean>(false);
+  const [named, setNamed] = useState<any>();
+
   const onSchool = () => {    
     setSchool(!school);
   };
@@ -24,6 +27,15 @@ const School = () => {
   const onSchool2 = () => {
     if(school === true){
       setSchool(false)
+    }
+  };
+  const onName = () => {    
+    setName(!name);
+  };
+
+  const onName2 = () => {
+    if(name === true){
+      setName(false)
     }
   };
   
@@ -49,6 +61,7 @@ const School = () => {
       <div className="w-[90%] tab:w-[550px] bg-white  p-3 desktop:flex desktop:justify-center desktop:items-center desktop:flex-col shadow-2xl"
       onClick={()=>{
         onSchool2()
+        onName2()
       }}
       >
         <div className="text-[25px] flex justify-between desktop:flex desktop:w-full desktop:justify-between">
@@ -59,15 +72,56 @@ const School = () => {
         </div>
 
         {/* main part */}
-        <div className="justify-center items-center flex flex-col mt-2 desktop:w-[350px] duration-[400ms] px-8">
+        <div className="justify-center items-center flex flex-col mt-2 desktop:w-[350px] duration-[400ms]">
           {/* title */}
           <div className="flex items-center">
-            <div className="font-[800] text-[30px] mr-2">Create school</div>
+            <div className="font-[800] text-[30px] mr-2">Create school & name</div>
           </div>
 
           {/* form */}
           <div className="mt-2 w-full">
-            {/* input Email */}
+            {/* input Name */}
+            <div>
+            <div className="ml-1 font-[600] text-[16px] duration-[300ms] h-[10px] mb-5">
+           
+              {name ? (
+              <div className="">
+                name
+              </div>
+            ) : null}
+            </div>
+            
+            {!name ? (
+              <input
+                // type="name"
+                placeholder="name"
+                className="w-full h-[40px] bg-white border border-gray-300 px-4 placeholder:text-black outline-0"
+                value={named}
+                onChange={(e : any) =>{
+                  setNamed(e.target.value)
+                }}
+                onClick={() => {
+                  onName();
+                }}
+              />
+            ) : (
+              <input
+                type="name"
+                
+                className="w-full h-[40px] bg-white border border-black px-4 outline-0"
+                value={named}
+                onChange={(e : any) =>{
+                  setNamed(e.target.value)
+                }}
+                onClick={() => {
+                  onName();
+                }}
+              />
+            )}
+            
+            </div>
+
+            {/* input School */}
             <div>
             <div className="ml-1 font-[600] text-[16px] duration-[300ms] h-[10px] mb-5">
            
@@ -120,19 +174,13 @@ const School = () => {
 
           <button className="w-full h-[45px] duration-[350ms] rounded-[25px] border border-[blue] mt-[30px] flex justify-center items-center text-white bg-black hover:cursor-pointer hover:scale-[1.1] mb-4 font-[700] text-[13px]"
             onClick={()=>{
-              const kkn:any = {email : user?.email, password : user?.password, school : schooled}
+              const kkn:any = {email : user?.email, password : user?.password, school : schooled, name : named}
               dispatch(createUser(kkn))
-              console.log("dd");
-              
-              dispatch(logOut())
-              registerUser({email : user?.email, password : user?.password, school : schooled}).then(()=>{
-                console.log("clicked");
+           
+              registerUser({email : user?.email, password : user?.password, school : schooled, name : named}).then((res : any)=>{
                 dispatch(logOut())
-                
+                console.log("res2", res);
               })
-              // console.log("kkn", kkn);
-              
-            //   navigate("/school")
             }}
             >
               Register

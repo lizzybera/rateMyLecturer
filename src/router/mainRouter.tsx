@@ -24,6 +24,10 @@ export const mainRouter = createBrowserRouter ([
         element : <SignIn />
     },
     {
+        path : "/:userID/:token/sign-in",
+        element : <SignIn />
+    },
+    {
         path : "/prof",
         element : <ProfSignUp />
     },
