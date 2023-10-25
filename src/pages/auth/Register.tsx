@@ -1,17 +1,19 @@
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
-import { Link } from "react-router-dom";
-import { changedToggle } from "../../global/GlobalState";
-import { useDispatch} from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { changedToggle, createUser } from "../../global/GlobalState";
+import { useDispatch, useSelector} from "react-redux";
 
 const Register = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
-  const [parent] = useAutoAnimate()
+  const user = useSelector((state:any) => state.user)
+  const [emailed, setEmailed] = useState<any>(user?.email)
+
   const [email, setEmail] = useState<boolean>(false);
-
+// console.log(user)
   const onEmail = () => {
     setEmail(!email);
   };
@@ -20,6 +22,8 @@ const Register = () => {
       setEmail(false)
     }
   };
+
+
   return (
     <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10 fixed text-black z-[100]" 
     
@@ -31,12 +35,12 @@ const Register = () => {
       }}
       
       >
-        <div className="text-[27px] flex justify-end cursor-pointer desktop:justify-end desktop:flex desktop:w-full "
+        <div className="text-[27px] flex justify-end desktop:justify-end desktop:flex desktop:w-full "
         onClick={()=>{
           dispatch(changedToggle())
         }}
         >
-          <GrFormClose/>
+          <GrFormClose className="cursor-pointer"/>
         </div>
 
         {/* main part */}
@@ -76,7 +80,9 @@ const Register = () => {
           </div>
 
           {/* form */}
-          <div className="mt-6 w-full ">
+          <div 
+          // onSubmit={onHandleSubmit} 
+          className="mt-6 w-full ">
             {/* input */}
             <div className="ml-1 font-[600] text-[16px] h-[10px] mb-5 duration-[200ms]">
             {email ? (
@@ -90,6 +96,10 @@ const Register = () => {
                 type="text"
                 placeholder="Email"
                 className="w-full h-[40px] bg-white border border-gray-300 px-4 placeholder:text-black outline-0"
+                value={emailed}
+                onChange={(e : any) =>{
+                  setEmailed(e.target.value)
+                }}
                 onClick={() => {
                   onEmail();
                 }}
@@ -98,15 +108,28 @@ const Register = () => {
               <input
                 type="text"
                 className="w-full h-[40px] bg-white border border-black px-4 outline-0"
+                value={emailed}
+                onChange={(e : any) =>{
+                  setEmailed(e.target.value)
+                }}
                 onClick={() => {
                   onEmail();
                 }}
               />
             )}
 
-            <div className="w-full h-[45px] duration-[350ms] rounded-[25px] border border-[blue] mt-[47px] flex justify-center items-center text-white bg-black hover:cursor-pointer hover:scale-[1.1] ">
+            <button type="submit" className="w-[100%] h-[45px] duration-[350ms] rounded-[25px] border border-[blue] mt-[47px] flex justify-center items-center text-white bg-black hover:cursor-pointer hover:scale-[1.1] "
+            onClick={()=>{
+              const kk: any = {email : emailed, password : user?.password}
+              dispatch(createUser(kk))
+              // console.log(user)
+              navigate("/password")
+            }}
+            >
+              {/* <Link to="/password"> */}
               <div className="font-[700] text-[13px] ml-2">Continue</div>
-            </div>
+              {/* </Link> */}
+            </button>
           </div>
 
           <div className="w-full  justify-center items-center text-center flex flex-col text-[11px] mt-3">
