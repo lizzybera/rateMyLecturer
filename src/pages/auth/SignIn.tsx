@@ -81,7 +81,7 @@ const SignIn = () => {
         </div>
 
         {/* main part */}
-        <div className="justify-center items-center flex flex-col mt-3 desktop:w-[350px] duration-[400ms] px-8">
+        <div className="justify-center items-center flex flex-col mt-3 desktop:w-[350px] duration-[400ms]">
           {/* title */}
           <div className="flex items-center">
             <div className="font-[800] text-[30px] mr-2">LogIn</div>
