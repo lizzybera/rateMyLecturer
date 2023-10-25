@@ -9,6 +9,7 @@ import FrontPage from "../pages/frontPage"
 import ProfDetailsPage from "../pages/prof/ProfDetailsPage"
 import Password from "../pages/auth/Password"
 import School from "../pages/auth/School"
+import AllProfessors from "../pages/prof/AllProfessors"
 
 export const mainRouter = createBrowserRouter ([
     {
@@ -42,6 +43,11 @@ export const mainRouter = createBrowserRouter ([
     {
         path : "/pp",
         element : <ProfDetailsPage />
+    },
+    {
+        path : "/profs/all",
+        element : <AllProfessors />
+      
     },
     {
         path : "/prof/signup",
