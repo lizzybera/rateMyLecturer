@@ -4,10 +4,12 @@ import styles from "./style.module.css"
 import editPencil from "../../assets/edit-pencil.svg"
 import editFlower from "../../assets/edit-flower.svg"
 import editLike from "../../assets/edit-like.svg"
+import LandingHeader from '../../components/common/LandingHeader';
 
 const FrontPage = () => {
     return (
         <div>
+            <LandingHeader />
             <Home />
               <div className={styles.rpmParentContainer}>
             <h1>Join the RMP Family</h1>

@@ -10,6 +10,7 @@ import ProfDetailsPage from "../pages/prof/ProfDetailsPage"
 import Password from "../pages/auth/Password"
 import School from "../pages/auth/School"
 import AllProfessors from "../pages/prof/AllProfessors"
+import LandingHeader from "../components/common/LandingHeader"
 
 export const mainRouter = createBrowserRouter ([
     {
@@ -47,6 +48,11 @@ export const mainRouter = createBrowserRouter ([
     {
         path : "/profs/all",
         element : <AllProfessors />
+      
+    },
+    {
+        path : "/land/header",
+        element : <LandingHeader />
       
     },
     {
