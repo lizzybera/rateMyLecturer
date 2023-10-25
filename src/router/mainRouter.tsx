@@ -7,6 +7,8 @@ import ProfMainSign from "../pages/prof/ProfMainSign"
 import RateAProf from "../pages/RateAProf"
 import FrontPage from "../pages/frontPage"
 import ProfDetailsPage from "../pages/prof/ProfDetailsPage"
+import Password from "../pages/auth/Password"
+import School from "../pages/auth/School"
 
 export const mainRouter = createBrowserRouter ([
     {
@@ -24,6 +26,14 @@ export const mainRouter = createBrowserRouter ([
     {
         path : "/prof",
         element : <ProfSignUp />
+    },
+    {
+        path : "/password",
+        element : <Password />
+    },
+    {
+        path : "/school",
+        element : <School />
     },
     {
         path : "/pp",

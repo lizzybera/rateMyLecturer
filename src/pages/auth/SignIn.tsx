@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {useAutoAnimate} from "@formkit/auto-animate/react"
 import { useDispatch} from "react-redux";
 import { changedToggle2 } from "../../global/GlobalState";
+import * as yup from 'yup'
+import { yupResolver } from "@hookform/resolvers/yup";
+import {useForm} from "react-hook-form"
+import { studentSignIn } from "../../api/studentApis";
 
 const SignIn = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [parent]  = useAutoAnimate()
   const [email, setEmail] = useState<boolean>(false);
   const [password, setPassword] = useState<boolean>(false);
@@ -28,6 +33,27 @@ const SignIn = () => {
       setPassword(false)
     }
   };
+
+  const Schema = yup.object({
+    email : yup.string().email().required(),
+    password : yup.string().required()
+  })
+
+  const { register, handleSubmit} = useForm({
+    resolver : yupResolver(Schema)
+  })
+
+  const onHandleSubmit = handleSubmit((data : any) =>{
+    const {email, password} = data
+    console.log("data",data);
+    
+    
+    studentSignIn({email, password}).then((res : any) =>{
+      console.log("handleRes", res);
+      navigate("/")
+    })
+  })
+
   return (
     <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10 fixed  text-black z-[100]" ref={parent}>
       {/* form the body */}
@@ -37,7 +63,7 @@ const SignIn = () => {
         onPassword2()
       }}
       >
-        <div className="text-[27px] flex justify-end cursor-pointer desktop:justify-end desktop:flex desktop:w-full "
+        <div className="text-[27px] flex justify-end cursor-pointer desktop:justify-end desktop:flex desktop:w-full px-8"
         onClick={()=>{
           dispatch(changedToggle2())
         }}
@@ -46,7 +72,7 @@ const SignIn = () => {
         </div>
 
         {/* main part */}
-        <div className="justify-center items-center flex flex-col mt-3 desktop:w-[350px] duration-[400ms]">
+        <div className="justify-center items-center flex flex-col mt-3 desktop:w-[350px] duration-[400ms] px-8">
           {/* title */}
           <div className="flex items-center">
             <div className="font-[800] text-[30px] mr-2">LogIn</div>
@@ -74,7 +100,7 @@ const SignIn = () => {
           </div>
 
           {/* form */}
-          <div className="mt-6 w-full">
+          <form onSubmit={onHandleSubmit} className="mt-6 w-full">
             {/* input Email */}
             <div>
             <div className="ml-1 font-[600] text-[16px] duration-[300ms] h-[10px] mb-5">
@@ -89,6 +115,7 @@ const SignIn = () => {
                 type="text"
                 placeholder="Email"
                 className="w-full h-[40px] bg-white border border-gray-300 px-4 placeholder:text-black outline-0"
+                {...register("email")}
                 onClick={() => {
                   onEmail();
                 }}
@@ -97,6 +124,7 @@ const SignIn = () => {
               <input
                 type="text"
                 className="w-full h-[40px] bg-white border border-black px-4 outline-0"
+                {...register("email")}
                 onClick={() => {
                   onEmail();
                 }}
@@ -117,6 +145,7 @@ const SignIn = () => {
                 type="password"
                 placeholder="Password"
                 className="w-full h-[40px] bg-white border border-gray-300 px-4 placeholder:text-black outline-0"
+                {...register("password")}
                 onClick={() => {
                   onPassword();
                 }}
@@ -125,6 +154,7 @@ const SignIn = () => {
               <input
                 type="password"
                 className="w-full h-[40px] bg-white border border-black px-4 outline-0"
+                {...register("password")}
                 onClick={() => {
                   onPassword();
                 }}
@@ -134,10 +164,10 @@ const SignIn = () => {
 
             <div className="text-blue-700 font-[700] w-full flex justify-center items-cente mt-5 ml-1">Forgot your password?</div>
 
-            <div className="w-full h-[45px] duration-[350ms] rounded-[25px] border border-[blue] mt-[30px] flex justify-center items-center text-white bg-black hover:cursor-pointer hover:scale-[1.1] ">
+            <button type="submit" className="w-full h-[45px] duration-[350ms] rounded-[25px] border border-[blue] mt-[30px] flex justify-center items-center text-white bg-black hover:cursor-pointer hover:scale-[1.1] ">
               <div className="font-[700] text-[13px] ml-2">Continue</div>
-            </div>
-          </div>
+            </button>
+          </form>
 
 
           <div className="w-full  justify-center items-center text-center flex flex-col text-[11px] mt-3">

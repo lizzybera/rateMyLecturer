@@ -1,10 +1,10 @@
 import axios from "axios"
 
-const url : string = ""
+const url : string = "https://lecturer-rating.onrender.com/api/prof"
 
 export const profRegister = async (data : any) =>{
     try {
-        return axios.post(`${url}/`, data).then((res : any)=>{
+        return await axios.post(`${url}/`, data).then((res : any)=>{
             return res.data.data
         })
     } catch (error) {
@@ -14,7 +14,7 @@ export const profRegister = async (data : any) =>{
 
 export const profSignIn = async (data : any) =>{
     try {
-        return axios.post(`${url}/`, data).then((res : any)=>{
+        return await axios.post(`${url}/`, data).then((res : any)=>{
             return res.data.data
         })
     } catch (error) {
