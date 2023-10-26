@@ -157,6 +157,112 @@
     transition: opacity 200ms ease-out 0s;
 }
 
+.inputContainer input {
+    -webkit-box-align: center;
+    align-items: center;
+    appearance: none;
+    border: 2px solid rgb(158, 158, 158);
+    border-radius: 50%;
+    display: flex;
+    height: 44px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin: 0px 0px 8px;
+    opacity: 0.5;
+    width: 44px;
+}
+
+.inputContainer .yesCheck:checked {
+    opacity: 1;
+    background: rgb(142, 207, 111);
+    border: unset;
+}
+
+.inputContainer .noCheck:checked {
+    opacity: 1;
+    background: rgb(235, 87, 87);
+    border: unset;
+}
+
+
+
+.inputContainer .yesCheck:checked::before {
+    background-size: cover;
+    content: "";
+    display: flex;
+    height: 15px;
+    width: 20px;
+    background-image: url("https://ratemyprofessors.com/static/media/checkmark-clear.cd53f0c8.svg");
+}
+
+.inputContainer .noCheck:checked::before {
+    background-size: cover;
+    content: "";
+    display: flex;
+    height: 15px;
+    width: 15px;
+    background-image: url("https://www.ratemyprofessors.com/static/media/close-icon-white.73f4fc82.svg");
+}
+
+
+.inputBoxFlex {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.inputContainer {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 32px;
+    max-width: 44px;
+    text-align: center;
+}
+
+.guideLinesText {
+    display: flex;
+}
+
+.guideLinesText h4 {
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+.guideLineBox {
+    background: rgb(247, 247, 247);
+    border-radius: 3px;
+    padding: 30px 10px;
+    margin-bottom: 10px;
+}
+
+.viewLink {
+    text-decoration: underline;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.newInput {
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 5px;
+    font-family: Helvetica, arial;
+    font-size: 16px;
+    outline: none;
+    padding: 16px 16px 120px 16px;
+    resize: none;
+    width: 100%;
+}
+
+.guideLineBox ul {
+   margin: 10px 0;
+}
+
+.guideLineBox ul li {
+    padding-left: 20px;
+}
+
+
 @media screen and (max-width: 800px) {
     .rateBoxStatus {
         width: 100%;
