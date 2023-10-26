@@ -27,7 +27,7 @@ const LandingHeader = () => {
       {toggle2 && <SignIn />}
       {toggle3 && <LandingDropDown />}
       
-    <div className='w-full flex justify-center h-[240px] bg-[#FFFFFF]'>
+    <div className='w-full flex justify-center h-[240px] bg-[#FFFFFF] headerMedium:h-[120px]'>
         <div className="w-[90%] justify-between mt-5 flex h-[50px]  items-center">
                 <div className="flex w-[110px] justify-between text-[23px] cursor-pointer">
                     <AiFillFacebook />
