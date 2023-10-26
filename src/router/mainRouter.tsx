@@ -11,6 +11,7 @@ import Password from "../pages/auth/Password"
 import School from "../pages/auth/School"
 import AllProfessors from "../pages/prof/AllProfessors"
 import LandingHeader from "../components/common/LandingHeader"
+import LandingDropDown from "../components/common/LandingDropDown"
 
 export const mainRouter = createBrowserRouter ([
     {
@@ -24,6 +25,10 @@ export const mainRouter = createBrowserRouter ([
     {
         path : "/sign-in",
         element : <SignIn />
+    },
+    {
+        path : "/drop",
+        element : <LandingDropDown />
     },
     {
         path : "/:userID/:token/sign-in",

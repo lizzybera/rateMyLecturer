@@ -4,7 +4,7 @@ import { GrFormClose } from "react-icons/gr";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {useAutoAnimate} from "@formkit/auto-animate/react"
 import { useDispatch} from "react-redux";
-import { changedToggle2 } from "../../global/GlobalState";
+import { changedToggle2, createUser } from "../../global/GlobalState";
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form"
@@ -52,6 +52,7 @@ const SignIn = () => {
     studentSignIn({email, password}).then((res : any) =>{
       // console.log("handleRes", res);
       if(res){
+        dispatch(createUser(res))
         navigate("/")
       }
     })
