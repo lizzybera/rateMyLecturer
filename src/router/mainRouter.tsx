@@ -47,7 +47,8 @@ export const mainRouter = createBrowserRouter ([
         element : <School />
     },
     {
-        path : "/pp",
+       
+        path : "/professor-details/:id",
         element : <ProfDetailsPage />
     },
     {
