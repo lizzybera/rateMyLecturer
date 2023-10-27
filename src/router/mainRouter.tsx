@@ -26,7 +26,7 @@ export const mainRouter = createBrowserRouter ([
         element : <ProfSignUp />
     },
     {
-        path : "/pp",
+        path : "/professor-details/:id",
         element : <ProfDetailsPage />
     },
     {

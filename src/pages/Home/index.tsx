@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './style.module.css'
 import rateLogo from "../../assets/rate-logo.svg"
 import { FaUniversity } from "react-icons/fa"
@@ -9,6 +9,8 @@ import DropDown from '../../components/DropDown'
 import { LiaAppleAltSolid } from "react-icons/lia"
 import Footer from '../../components/common/Footer'
 import { useNavigate } from 'react-router-dom'
+import LoadingScreen from '../../components/LoadingScreen'
+import axios from 'axios'
 
 
 const Home = () => {
@@ -42,7 +44,31 @@ const Home = () => {
 
     ]
     const [funnabActive, setFunnabActive] = useState(false)
+    
     const [otherSchoolActive, setOtherSchoolActive] = useState(false)
+
+    const [loading, setLoading] = useState(false)
+
+    const [allProfessors, setAllProfessors] = useState([])
+
+    useEffect(() => {
+        setLoading(true)
+        axios.get(
+            `https://lecturer-rating.onrender.com/api/prof`
+          )
+          .then((response) => {
+         setLoading(false)
+            console.log(response)
+            setAllProfessors(response.data.data)
+         
+        
+           })
+          .catch((err) => {
+            console.log(err)
+            setLoading(false)
+           
+          })
+    }, [])
 
     const setFunnabActiveFunction = () => {
         setFunnabActive(true);
@@ -55,7 +81,9 @@ const Home = () => {
         navigate("/prof/signup")
     }
     return (
-        <div style={{ position: 'relative' }}>
+        <>
+        {loading && (<LoadingScreen />)}
+         <div style={{ position: 'relative' }}>
             <div className={styles.newDropDownContainer}>
                 <header>
                     <section className={styles.heroHeader}>
@@ -111,12 +139,12 @@ const Home = () => {
                             <input placeholder='Enter Professor Name' value={profileInput} onChange={(e) => setProfileInput(e.target.value)} />
 
                         </div>
-                        {listOfProfessors?.map((list: any) => {
+                        {allProfessors?.map((list: any) => {
                             return (
 
                                 <div 
                                 className={styles.parentListContainer} 
-                                onClick={() => navigate("/rate-a-professor")}
+                                onClick={() => navigate(`/professor-details/${list.userId}`)}
                                 >
                                     <div className={styles.firstContainer}>
 
@@ -132,11 +160,11 @@ const Home = () => {
 
                                     </div>
                                     <div className={styles.secondContainer}>
-                                        <h1>{list.name}</h1>
+                                        <h1>{list.Name}</h1>
                                         <div className={styles.secondContainerHolder}>
-                                            <p className={styles.listDepartment}>{list.dept}</p>
+                                            <p className={styles.listDepartment}>{list.Professional_Department}</p>
                                             <p className={styles.dotCover}>.</p>
-                                            <p className={styles.listCollege}>{list.college}</p>
+                                            <p className={styles.listCollege}>{list.school}</p>
                                         </div>
                                     </div>
 
@@ -150,6 +178,8 @@ const Home = () => {
            
             {/* <Footer /> */}
         </div>
+        </>
+       
     )
 }
 
