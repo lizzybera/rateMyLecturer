@@ -9,6 +9,7 @@ import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form"
 import { studentSignIn, studentVerify } from "../../api/studentApis";
+import {jwtDecode} from "jwt-decode"
 
 const SignIn = () => {
   const {userID, token} = useParams()
@@ -50,10 +51,13 @@ const SignIn = () => {
     
     
     studentSignIn({email, password}).then((res : any) =>{
-      // console.log("handleRes", res);
+      console.log("handleRes", res);
       if(res){
-        dispatch(createUser(res))
+        // const decode = jwtDecode(res)
+        dispatch(createUser(res.user))
         navigate("/")
+        console.log("res",res.user);
+        
       }
     })
   })

@@ -12,6 +12,8 @@ import School from "../pages/auth/School"
 import AllProfessors from "../pages/prof/AllProfessors"
 import LandingHeader from "../components/common/LandingHeader"
 import LandingDropDown from "../components/common/LandingDropDown"
+import ProfilePage from "../pages/profilePage/ProfilePage"
+import AccountSettings from "../pages/profilePage/AccountSettings"
 
 export const mainRouter = createBrowserRouter ([
     {
@@ -21,6 +23,14 @@ export const mainRouter = createBrowserRouter ([
     {
         path : "/register",
         element : <Register />
+    },
+    {
+        path : "/profile",
+        element : <ProfilePage />
+    },
+    {
+        path : "/acct-settings",
+        element : <AccountSettings />
     },
     {
         path : "/sign-in",

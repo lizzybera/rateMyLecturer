@@ -1,10 +1,10 @@
-import React from 'react'
 import Home from '../Home';
 import styles from "./style.module.css"
 import editPencil from "../../assets/edit-pencil.svg"
 import editFlower from "../../assets/edit-flower.svg"
 import editLike from "../../assets/edit-like.svg"
 import LandingHeader from '../../components/common/LandingHeader';
+import Footer from '../../components/common/Footer';
 
 const FrontPage = () => {
     return (
@@ -32,6 +32,7 @@ const FrontPage = () => {
             </div>
             <button className={styles.signUpButton}>Sign up now!</button>
             </div>
+            <Footer />
         </div>
     )
 }
