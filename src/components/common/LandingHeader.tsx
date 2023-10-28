@@ -5,6 +5,7 @@ import SignIn from "../../pages/auth/SignIn";
 import { logOut, toggleState, toggleState2, toggleState3 } from "../../global/GlobalState";
 import LandingDropDown from "./LandingDropDown";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -57,7 +58,7 @@ const LandingHeader = () => {
                             onClick={()=>{
                               onDrop()
                             }}
-                            >Hey, {user?.name} Henry</div>
+                            >Hey, {user?.name}</div>
                           )
                         }
                 </div>
@@ -69,9 +70,13 @@ const LandingHeader = () => {
                   drop ? (
                     <>
                       <div className="w-[180px] rounded-md bg-white shadow-2xl absolute right-[90px] top-[65px] z-[100] text-[13px] font-[700] headerMedium:hidden flex flex-col ">
+                 <Link to="/profile">
                  <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3 rounded-t-md">Profile</div>
+                 </Link>
 
+                 <Link to="/acct-settings">
                  <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3">Account Settings</div>
+                 </Link>
 
                  <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3">Your Ratings</div>
 
