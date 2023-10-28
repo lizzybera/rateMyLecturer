@@ -54,11 +54,13 @@ const LandingHeader = () => {
                        </>
                           ) : (
 
-                            <div className=" w-[110px] h-[38px] bg-black flex justify-center items-center text-[17px] rounded-full text-white font-[700] hover:bg-slate-900"
+                            <div className=" w-[500px] h-[40px]  flex justify-center items-center text-[17px] rounded-full text-white "
                             onClick={()=>{
                               onDrop()
                             }}
-                            >Hey, {user?.name}</div>
+                            >
+                              <div className="py-2 font-[700] px-5 rounded-full hover:bg-slate-800 bg-black">Hey, {user?.name}</div>
+                            </div>
                           )
                         }
                 </div>
@@ -69,7 +71,7 @@ const LandingHeader = () => {
                       {
                   drop ? (
                     <>
-                      <div className="w-[180px] rounded-md bg-white shadow-2xl absolute right-[90px] top-[65px] z-[100] text-[13px] font-[700] headerMedium:hidden flex flex-col ">
+                      <div className="w-[180px] rounded-md bg-white shadow-2xl absolute right-[90px] top-[67px] z-[100] text-[13px] font-[700] headerMedium:hidden flex flex-col ">
                  <Link to="/profile">
                  <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3 rounded-t-md">Profile</div>
                  </Link>
