@@ -78,9 +78,13 @@ const LandingHeader = () => {
                  <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3">Account Settings</div>
                  </Link>
 
+                 <Link to="/ratings" >
                  <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3">Your Ratings</div>
+                 </Link>
 
-                 <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3">Saved Professors</div>
+                <Link to="/saved-prof">
+                <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3">Saved Professors</div>
+                </Link>
 
                  <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3"
                  onClick={()=>{

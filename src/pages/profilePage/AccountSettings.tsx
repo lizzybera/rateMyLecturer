@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/common/Header";
 import Footer from "../../components/common/Footer";
+import { useSelector } from "react-redux";
 
 
 const AccountSettings = () => {
+  const user = useSelector((state : any) => state.user)
 
   const [name, setName] = useState<boolean>(false);
   const [firstName, setFirstName] = useState<boolean>(false);
@@ -38,14 +40,14 @@ const AccountSettings = () => {
     <>
     <Header />
 
-    <div className="flex w-full h-[100vh] justify-center items-center pt-[400px] pb-[350px]"
+    <div className="flex w-full h-[100vh] justify-center  pt-[130px] pb-[350px]"
     onClick={()=>{
       onName2()
       onFirstName2()
     }}
     >
-      <div className="w-[60%] min-h-[400px] justify-center items-center headerMedium:w-full headerMedium:px-8">
-        <div className="font-[800] text-[30px] mb-16">Hey, George</div>
+      <div className="w-[60%] min-h-[400px] headerMedium:w-full headerMedium:px-8">
+        <div className="font-[800] text-[30px] mb-16">Hey, {user?.name}</div>
 
 {/* Header */}
         <div className="flex">
@@ -61,14 +63,20 @@ const AccountSettings = () => {
           <div className="w-full bg-black h-[2px] mt-1 "/>
           </div>
           </Link>
+          
+          <Link to="/ratings">
           <div className="mr-14 text-[16px] hover:font-[600]  headerMedium:text-[15px] cursor-pointer">
           Ratings
           {/* <div className="w-full bg-black h-[2px] mt-1 "/> */}
           </div>
+          </Link>
+          <Link to="/saved-prof">
           <div className="mr-14 text-[16px] hover:font-[600] headerMedium:text-[15px] cursor-pointer">      
+
 Saved Professors
           {/* <div className="w-full bg-black h-[2px] mt-1 "/> */}
           </div>
+          </Link>
         </div>
 
 {/* line */}
@@ -121,7 +129,7 @@ Saved Professors
 
               </div> 
                 ) : (
-                  <div className=" text-[17px]">First George</div>
+                  <div className=" text-[17px]">{user?.email}</div>
                 )
               }
 
