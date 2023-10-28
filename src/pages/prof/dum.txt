@@ -1,59 +1,145 @@
-<div className='w-full min-h-[100vh]'>
-      <div className="pt-[100px] px-10 w-[1000px] headerMedium:w-full ">
+<div className="w-[60%] min-h-[400px] justify-center items-center headerMedium:w-full headerMedium:px-8">
+        <div className="font-[800] text-[30px] mb-16">Hey, George</div>
 
-      <div className="text-[20px]">278963 professors with 
-      <span className="font-[700]">"henry"</span> 
-      in their name
-      </div>
+{/* Header */}
+        <div className="flex">
+          <Link to="/profile">
+          <div className="mr-14 text-[16px]  headerMedium:text-[15px] cursor-pointer">
+            Profile
+          {/* <div className="w-full bg-black h-[2px] mt-1 "/> */}
+          </div>
+          </Link>
+          <Link to="/acct-settings">
+          <div className="mr-14 hover:font-[600] headerMedium:text-[15px] text-[18px] font-[700] cursor-pointer ">
+          Account Settings
+          <div className="w-full bg-black h-[2px] mt-1 "/>
+          </div>
+          </Link>
+          <div className="mr-14 text-[16px] hover:font-[600]  headerMedium:text-[15px] cursor-pointer">
+          Ratings
+          {/* <div className="w-full bg-black h-[2px] mt-1 "/> */}
+          </div>
+          <div className="mr-14 text-[16px] hover:font-[600] headerMedium:text-[15px] cursor-pointer">      
 
-      {/* department */}
-        <div className="flex text-[17px] mt-8 items-center">
-            <div className="font-[700] mr-4">Department</div>
-            <select className="w-[250px] h-[45px] border rounded-md placeholder:red outline-0" placeholder="select ....">
-                <option value="">Any</option>
-                <option value="">Any</option>
-                <option value="">Any</option>
-                <option value="">Any</option>
-                <option value="">Any</option>
-                <option value="">Any</option>
-                <option value="">Any</option>
-            </select>
+Saved Professors
+          {/* <div className="w-full bg-black h-[2px] mt-1 "/> */}
+          </div>
         </div>
 
-        {/*profs Data  */}
-        <div className="flex justify-between w-full bg-[#F7F7F7] h-[170px] items-center mt-8 px-6 py-4">
-              <div className="flex">
-                  <div className="flex justify-center flex-col items-center mr-10">
-                      <div className="font-[500]">Quality</div>
-                      <div className="w-[80px] h-[60px] bg-[#FFF170] flex justify-center items-center font-[700] text-[30px] mb-2 ">3.8</div>
-                      <div className="text-[14px] ">58 ratings</div>
-                  </div>
+{/* line */}
+        <div className="w-full headerMedium:w-full h-[1px] bg-slate-400 mb-5"/>
 
-                  <div>
-                    <div className="font-[700] text-[20px]">WAYNE HENRY</div>
-                    <div className="text-[15px] mt-2">Philosophy</div>
-                    <div className="text-[15px] mt-2">Capalino University</div>
+{/* edit */}
+        {
+          !show ? (
+            <div className="font-[700] text-[15px] text-end cursor-pointer"
+        onClick={()=>{
+          onShow()
+        }}
+        >Edit</div>
 
-                    <div className="text-[15px] mt-2 flex items-center">
-                      <div className="font-[700] text-[18px]">N/A 
-                        <span className="text-[15px] font-[400] ml-2">would you again</span>
-                      </div>
+          ) : null
+        }
 
-                      <div className="w-[1px] mx-2 h-[16px] bg-black"/>
 
-                      <div className="font-[700] text-[18px]">3.2 
-                        <span className="text-[15px] font-[400] ml-2">level of difficulty</span>
-                      </div>
-                    </div>
+        <div className="flex my-[25px]">
 
-                  </div>
+          <div className="w-[80%]">
+            {/* Email */}
+            <div className="mb-14 text-[17px] flex ">
+              <div className="w-[45%]">Email</div>
+             
+
+              {
+                show ? (
+                   <div className="w-[50%]">
+                
+               <div className="">
+               {!name ? (
+              <input
+                // type="name"
+                className="w-full h-[40px] bg-white border border-gray-300 px-4 placeholder:text-black outline-0 rounded-sm"
+                onClick={() => {
+                  onName();
+                }}
+              />
+            ) : (
+              <input
+                // type="name"
+                className="w-full h-[40px] bg-white border border-black px-4 outline-0 rounded-sm"
+                onClick={() => {
+                  onName();
+                }}
+              />
+            )}
+               </div>
+
+              </div> 
+                ) : (
+                  <div className=" text-[17px]">{user?.email}</div>
+                )
+              }
+
+              
+            </div>
+
+{/* Password */}
+            <div className="mb-14 text-[17px] flex ">
+               <div className="w-[45%]">Password</div>
+            
+                {
+                  show ? (
+                    <div className="w-[50%] ">
+                
+               <div className="mt-1">
+               {!firstName ? (
+              <input
+                // type="name"
+                className="w-full h-[40px] bg-white border border-gray-300 px-4 placeholder:text-black outline-0 rounded-sm"
+                onClick={() => {
+                  onFirstName();
+                }}
+              />
+            ) : (
+              <input
+                // type="name"
+                className="w-full h-[40px] bg-white border border-black px-4 outline-0 rounded-sm"
+                onClick={() => {
+                  onFirstName();
+                }}
+              />
+            )}
+               </div>
+
               </div>
+                  ) : (
+                  <div className=" text-[30px] -mt-5">.........</div>
+                  )
+                }
+              
 
-              {/* share button */}
-              <div className="-mt-28 cursor-pointer">save</div>
+            </div>
+
+{/* Button */}
+          {
+            show ? (
+              <div className="w-full flex flex-col items-end">
+          <button type="submit" className="w-[45%] h-[45px] duration-[350ms] rounded-[25px] border border-[blue] flex justify-center items-center text-white bg-black hover:cursor-pointer hover:scale-[1.1] headerMedium:w-[60%]"
+            >Save Changes
+            </button>
+
+            <div className="font-[500] cursor-pointer ml-[90px] mt-4"
+            onClick={()=>{
+              onShow()
+            }}
+            >Cancel</div>
+          </div>
+            ) : null
+          }
+
+          </div>
+        
+  
+          </div>          
 
         </div>
-
-        
-      </div>
-    </div>

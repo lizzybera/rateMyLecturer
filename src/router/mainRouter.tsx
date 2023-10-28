@@ -14,6 +14,8 @@ import LandingHeader from "../components/common/LandingHeader"
 import LandingDropDown from "../components/common/LandingDropDown"
 import ProfilePage from "../pages/profilePage/ProfilePage"
 import AccountSettings from "../pages/profilePage/AccountSettings"
+import Ratings from "../pages/profilePage/Ratings"
+import SavedProfessors from "../pages/profilePage/SavedProfessors"
 
 export const mainRouter = createBrowserRouter ([
     {
@@ -29,8 +31,16 @@ export const mainRouter = createBrowserRouter ([
         element : <ProfilePage />
     },
     {
+        path : "/ratings",
+        element : <Ratings />
+    },
+    {
         path : "/acct-settings",
         element : <AccountSettings />
+    },
+    {
+        path : "/saved-prof",
+        element : <SavedProfessors />
     },
     {
         path : "/sign-in",
