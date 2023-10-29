@@ -11,7 +11,7 @@ import axios from "axios"
 const ProfDetailsPage = () => {
     const { id } = useParams();
     const [loading, setLoading] = useState(false)
-    const [singleProfessor, setSingleProfessor] = useState("")
+    const [singleProfessor, setSingleProfessor] = useState([])
     useEffect(() => {
         setLoading(true)
         axios.get(
@@ -33,8 +33,9 @@ const ProfDetailsPage = () => {
       <>
       {loading && (<LoadingScreen />)}
       <Header />
-
-    <div className="flex items-center justify-center w-full h-full">
+{singleProfessor?.map((list) => {
+    return (
+        <div className="flex items-center justify-center w-full h-full">
         {/* main */}
         <div className="w-[90%] h-full justify-center items-center  flex-col mt-16 headerMedium:mt-10">
 
@@ -43,15 +44,15 @@ const ProfDetailsPage = () => {
 {/* first part */}
 
     <div className="w-[33%] h-full headerMedium:w-full ">
-        <div className="font-[700] text-[80px]">4.3</div>
+        <div className="font-[700] text-[80px]">{`${list.__v}.0`}</div>
 
         <div className="font-[700] text-[14px] -mt-3">
         Overall Quality Based on 4  <span className="underline cursor-pointer">ratings</span>
         </div>
 
-        <div  className="font-[700] text-[40px] mt-4">Harry James</div>
+        <div  className="font-[700] text-[40px] mt-4">{list.Name}</div>
 
-        <div className=" text-[14px] w-[400px]">Professor in the <span className="font-[700] underline cursor-pointer">Agronomy department</span> at <span className="font-[700] underline cursor-pointer">Missouri State University</span></div>
+        <div className=" text-[14px] w-[400px]">Professor in the <span className="font-[700] underline cursor-pointer">{`${list.Professional_Department} Department`}</span> at <span className="font-[700] underline cursor-pointer">{list.school}</span></div>
 
         <div className="flex mt-8">
             <div className="flex flex-col items-center justify-center" >
@@ -66,10 +67,14 @@ const ProfDetailsPage = () => {
         </div>
 
         <div className="w-[250px] h-[45px] justify-center items-center flex bg-blue-600 text-white text-[14px] font-[500] rounded-full cursor-pointer hover:bg-blue-800 duration-300 mt-8">
-            Rate Professor James
+            {`Rate ${list.Name}`}
+          
         </div>
 
-        <div className="font-[500] text-[14px] mt-5 cursor-pointer underline">I'm Professor James</div>
+        <div className="font-[500] text-[14px] mt-5 cursor-pointer underline">
+            {`I'm ${list.Title} ${list.Name}`}
+      
+            </div>
 
    
     
@@ -233,6 +238,9 @@ const ProfDetailsPage = () => {
 
         </div>
     </div>
+    )
+})}
+   
 
       </>
   )
