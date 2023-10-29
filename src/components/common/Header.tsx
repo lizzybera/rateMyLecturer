@@ -10,7 +10,13 @@ import { toggleState, toggleState2 } from "../../global/GlobalState";
 import Register from "../../pages/auth/Register";
 import SignIn from "../../pages/auth/SignIn";
 
-const Header = () => {
+interface HeaderProps {
+  inputValue?: any;
+ setInputValue?: any;
+}
+
+
+const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
   const dispatch = useDispatch();
   const toggle = useSelector((state: any) => state.toggle);
   const toggle2 = useSelector((state: any) => state.toggle2);
@@ -47,14 +53,14 @@ const Header = () => {
           </div>
 
           {/* logo / search */}
-          <div className="flex h-full items-center">
+          <div className="flex items-center h-full">
             {/* logo */}
             <img className="mr-12" src={pics} alt="logo" />
 
-            <div className="ml-7 flex headerLarge:hidden">
+            <div className="flex ml-7 headerLarge:hidden">
               {show2 ? (
                 //  search1
-                <div className="flex justify-center items-center h-full">
+                <div className="flex items-center justify-center h-full">
                   <div className="flex items-center cursor-pointer">
                     <div
                       className="flex items-center"
@@ -80,7 +86,7 @@ const Header = () => {
 
                     {/* search bar  */}
 
-                    <div className="flex ml-10 smallLaptop:ml-5 tablet:ml-4 text-black">
+                    <div className="flex ml-10 text-black smallLaptop:ml-5 tablet:ml-4">
                       <input
                         type="text"
                         placeholder="professor name"
@@ -98,7 +104,7 @@ const Header = () => {
                   {/* <div>search</div> */}
                 </div>
               ) : (
-                <div className="flex justify-center items-center h-full tablet:hidden">
+                <div className="flex items-center justify-center h-full tablet:hidden">
                   <div className="flex items-center cursor-pointer">
                     <div
                       className="flex items-center"
@@ -127,10 +133,12 @@ const Header = () => {
 
                     {/* search bar  */}
 
-                    <div className="flex ml-5 desktop:ml-2 text-black">
+                    <div className="flex ml-5 text-black desktop:ml-2">
                       <input
                         type="text"
-                        placeholder="Your School"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        placeholder="Enter your Professor name"
                         className="w-[750px] h-[40px] rounded-full px-5 outline-none smallLaptop:w-[740px]"
                       />
                     </div>
