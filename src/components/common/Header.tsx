@@ -25,6 +25,12 @@ const Header  = () => {
   const toggle2 = useSelector((state: any) => state.toggle2);
   const toggle3 = useSelector((state: any) => state.toggle3);
 
+  const [search, setSearch] = useState<boolean>(false)
+
+  const onSearch = () => {
+    setSearch(!search)
+  }
+
   const [drop, setDrop] = useState<boolean>(false)
   const [show, setShow] = useState<boolean>(false);
   const [show2, setShow2] = useState<boolean>(false);
@@ -93,22 +99,29 @@ console.log(profileInput);
       {toggle2 && <SignIn />}
       {toggle3 && <LandingDropDown />}
 
-      <div className="w-full h-[65px] bg-black text-white justify-center items-center flex fixed">
+          <div className="w-full h-[65px] bg-black text-white justify-center items-center flex fixed">
         {/* main */}
         <div className="w-[95%] flex items-center justify-between">
-          <div className=" text-[20px] headerLarge:flex hidden"
+          {
+            !search ? (
+              <div className=" text-[20px] headerLarge:flex hidden"
           onClick={()=>{
             dispatch(toggleState3())
           }}
           >
             <AiOutlineMenu />{" "}
           </div>
+            ) : null
+          }
 
           {/* logo / search */}
           <div className="flex items-center h-full">
             {/* logo */}
-            <img className="mr-12" src={pics} alt="logo" />
-
+{
+  !search ? (
+    <img className="mr-12" src={pics} alt="logo" />
+  ) : null
+}
             <div className="flex ml-7 headerLarge:hidden">
               {!show2 ? (
                 //  search1
@@ -140,18 +153,7 @@ console.log(profileInput);
 
                     
                     <div className="flex ml-10 text-black smallLaptop:ml-5 tablet:ml-4">
-                      
-
-{/*                     
-                          <input
-                        type="text"
-                        placeholder="professor nameeeddddd"
-                        className="w-[350px] h-[40px] rounded-full px-5 outline-none desktop:ml-1 smallLaptop:ml-1"
-                        onClick={()=>{
-                          onShowed()
-                        }}
-                      />  */}
-                     
+                   
                       
                           <div>
                            <>
@@ -404,14 +406,116 @@ console.log(profileInput);
           </div>
 
           <div className="hidden headerLarge:flex"
-          
+          onClick={()=>{
+            onSearch()
+          }}
           >
             <AiOutlineSearch />
           </div>
 
-          {/* <div>jjjj</div> */}
+        
+{/* when searched */}
+          {
+            search ? (
+              <div className="w-full h-[65px] bg-black text-white items-center fixed justify-between hidden headerLarge:flex">
+          <div className="flex">
+          <img src={pics2} alt="logo" className="ml-10" />
+           <img src={pics3} alt="dropdown" className="ml-3 mr-4" />
+     
+           <div>
+                                <>
+                                <input
+                             type="text"
+                             placeholder="professor name"
+                             value={profileInput} onChange={(e) => setProfileInput(e.target.value)}
+                             className="w-[90%] text-black h-[40px] rounded-full px-5 outline-none desktop:ml-1 smallLaptop:ml-1 placeholder:text-[15px]"
+                              />
+                                </>
+     
+                             {profileInput.length > 0 && (
+                               <div className={styles.newDropDown} id="style-1">
+                                   <div>
+                                   <input
+                             type="text"
+                             placeholder="professor name"
+                             value={profileInput} onChange={(e) => setProfileInput(e.target.value)}
+                             className="w-[90%] text-black h-[40px] rounded-full px-5 outline-none desktop:ml-1 smallLaptop:ml-1"
+                             onClick={()=>{
+                               onShowed()
+                             }} />
+     
+                                   </div>
+     
+                                  <div>
+                                  {loading ? (
+                                       <div className={styles.loaderContainer}>
+                                           <span className={styles.loader}></span>
+                                       </div>
+                                   ) : (
+                                       <div>
+                                           {allProfessors.length > 0 ? (
+                                               <>
+                                                   {allProfessors?.map((list: any) => {
+                                                       return (
+                                                           <div
+                                                               className={styles.parentListContainer}
+                                                               onClick={() => navigate(`/professor-details/${list.userId}`)}
+                                                           >
+                                                               <div className={styles.firstContainer}>
+       
+                                                                   <span className="changeColor">
+                                                                       <IconContext.Provider
+                                                                           value={{ size: '30px' }}
+                                                                       >
+                                                                           <LiaAppleAltSolid
+                                                                               onMouseOver={({ target }) => target.style.color = "white"}
+                                                                               onMouseOut={({ target }) => target.style.color = "black"} />
+                                                                       </IconContext.Provider>
+                                                                   </span>
+                                                               </div>
+                                                               <div className={styles.secondContainer}>
+                                                                   <h1>{list.Name}</h1>
+                                                                   <div className={styles.secondContainerHolder}>
+                                                                       <p className={styles.listDepartment}>{list.Professional_Department}</p>
+                                                                       <p className={styles.dotCover}>.</p>
+                                                                       <p className={styles.listCollege}>{list.school}</p>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                       )
+                                                   })}
+                                               </>
+                                           ) : (
+                                               <div className={styles.noProfessor}>
+                                                   <p>Professor not found</p>
+                                               </div>
+                                           )}
+       
+                                       </div>
+                                   )}
+                                  </div>
+       
+                               </div>
+                           )}
+                             
+                               </div>
+     
+          </div>
+     
+          <div className="mr-10"
+          onClick={()=>{
+           onSearch()
+          }}
+          >cancel</div>
+           </div>
+            ) : null
+          }
+
+
         </div>
       </div>
+          
+      
     </>
   );
 };

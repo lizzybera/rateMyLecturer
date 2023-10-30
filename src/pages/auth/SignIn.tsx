@@ -9,6 +9,7 @@ import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form"
 import { studentSignIn, studentVerify } from "../../api/studentApis";
+import Swal from "sweetalert2";
 
 
 const SignIn = () => {
@@ -46,18 +47,36 @@ const SignIn = () => {
   })
 
   const onHandleSubmit = handleSubmit((data : any) =>{
-    const {email, password} = data
-    console.log("data",data);
-    
+    const {email, password} = data    
     
     studentSignIn({email, password}).then((res : any) =>{
       console.log("handleRes", res);
       if(res){
-        // const decode = jwtDecode(res)
+        Swal.fire({
+          icon : 'success',
+          title: 'Congratulations you have sucessfully signed in',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
         dispatch(createUser(res.user))
         navigate("/")
-        console.log("res",res.user);
-        
+          dispatch(changedToggle2())
+      }else{
+        Swal.fire({
+          icon : 'error',
+          title: 'Please check Your password or email',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+        dispatch(changedToggle2())
       }
     })
   })
