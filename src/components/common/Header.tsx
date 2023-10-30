@@ -6,9 +6,11 @@ import { RiGraduationCapFill } from "react-icons/ri";
 import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleState, toggleState2 } from "../../global/GlobalState";
+import { logOut, toggleState, toggleState2, toggleState3 } from "../../global/GlobalState";
 import Register from "../../pages/auth/Register";
 import SignIn from "../../pages/auth/SignIn";
+import { Link } from "react-router-dom";
+import LandingDropDown from "./LandingDropDown";
 
 interface HeaderProps {
   inputValue?: any;
@@ -17,10 +19,13 @@ interface HeaderProps {
 
 
 const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
+  const user = useSelector((state : any) => state.user)
   const dispatch = useDispatch();
   const toggle = useSelector((state: any) => state.toggle);
   const toggle2 = useSelector((state: any) => state.toggle2);
+  const toggle3 = useSelector((state: any) => state.toggle3);
 
+  const [drop, setDrop] = useState<boolean>(false)
   const [show, setShow] = useState<boolean>(false);
   const [show2, setShow2] = useState<boolean>(false);
   const [dropdown, setDropdown] = useState<boolean>(false);
@@ -41,14 +46,24 @@ const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
     setShow(!show);
   };
 
+const onDrop = () =>{
+    setDrop(!drop)
+  }
+
   return (
     <>
       {toggle && <Register />}
       {toggle2 && <SignIn />}
+      {toggle3 && <LandingDropDown />}
+
       <div className="w-full h-[65px] bg-black text-white justify-center items-center flex fixed">
         {/* main */}
         <div className="w-[95%] flex items-center justify-between">
-          <div className=" text-[20px] headerLarge:flex hidden">
+          <div className=" text-[20px] headerLarge:flex hidden"
+          onClick={()=>{
+            dispatch(toggleState3())
+          }}
+          >
             <AiOutlineMenu />{" "}
           </div>
 
@@ -95,7 +110,7 @@ const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
 
                       <input
                         type="text"
-                        placeholder="professor name"
+                        placeholder="professor school"
                         className="w-[350px] h-[40px] rounded-full px-5 ml-5 desktop:ml-1 outline-none smallLaptop:ml-1"
                       />
                     </div>
@@ -121,12 +136,12 @@ const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
                       <span className="text-[19px] ml-1 mt-1">School</span>
 
                       {!show ? (
-                        <img src={pics3} alt="dropdown" className="ml-3 " />
+                        <img src={pics3} alt="dropdown" className="ml-3 mr-8" />
                       ) : (
                         <img
                           src={pics3}
                           alt="dropdown"
-                          className="ml-3 rotate-180"
+                          className="ml-3 rotate-180 mr-8"
                         />
                       )}
                     </div>
@@ -138,7 +153,7 @@ const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
                         type="text"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
-                        placeholder="Enter your Professor name"
+                        placeholder="Enter your School name"
                         className="w-[750px] h-[40px] rounded-full px-5 outline-none smallLaptop:w-[740px]"
                       />
                     </div>
@@ -188,8 +203,21 @@ const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
           </div>
 
           {/* buttons */}
-          <div className="flex headerLarge:hidden">
-            {/* login */}
+            <div>
+          
+              {
+                user? (
+                  // name of user if signed in
+                   <div className=" w-[500px] h-[40px]  flex justify-center items-center text-[17px] rounded-full text-white headerLarge:hidden cursor-pointer"
+                   onClick={()=>{
+                    onDrop()
+                  }}
+                  >
+                              <div className="py-2 font-[700] px-5 rounded-full hover:bg-slate-800 bg-black">Hey, {user?.name}</div>
+                            </div>
+                ) : (
+                  <div className="flex headerLarge:hidden">
+              {/* login */}
             <div
               className="text-[15px] font-[500] rounded-full h-[30px] px-3 cursor-pointer hover:bg-gray-900 flex justify-center items-center"
               onClick={() => {
@@ -209,9 +237,51 @@ const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
             >
               Sign in
             </div>
+            </div>
+                )
+              }
+           
+           {
+                  user? (
+                    <>
+                      {
+                  drop ? (
+                    <>
+                      <div className="w-[180px] rounded-md bg-white shadow-2xl absolute right-[50px] top-[55px] z-[100] text-[13px] font-[700] headerMedium:hidden flex flex-col text-black">
+                 <Link to="/profile">
+                 <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3 rounded-t-md">Profile</div>
+                 </Link>
+
+                 <Link to="/acct-settings">
+                 <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3">Account Settings</div>
+                 </Link>
+
+                 <Link to="/ratings" >
+                 <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3">Your Ratings</div>
+                 </Link>
+
+                <Link to="/saved-prof">
+                <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3">Saved Professors</div>
+                </Link>
+
+                 <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3"
+                 onClick={()=>{
+                  dispatch(logOut())
+                 }}
+                 >Logout</div>
+                </div>
+                    </>
+                  ) : null
+                }
+                    </>
+                  ) : null
+                }
+
           </div>
 
-          <div className="hidden headerLarge:flex">
+          <div className="hidden headerLarge:flex"
+          
+          >
             <AiOutlineSearch />
           </div>
 
