@@ -41,7 +41,7 @@ const ProfMainSign = () => {
 
   const onMiddleName2 = () => {
     if(middleName === true){
-      setFirstName(false)
+      setMiddleName(false)
     }
   };
   const onLastName = () => {    

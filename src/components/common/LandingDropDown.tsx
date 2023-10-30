@@ -24,7 +24,7 @@ const LandingDropDown = () => {
         {
             !user ? (
 <div className="mt-20 h-[250px] px-6 w-full bg-white flex flex-col justify-center">
-        <div className="font-[700] text-[30px] mb-10">HOWDY</div>
+        <div className="font-[700] text-[30px] mb-10">HOWDY </div>
 
         <div className="mb-5 font-[500] text-[20px]"
         onClick={()=>{
@@ -47,7 +47,7 @@ const LandingDropDown = () => {
         </div>
             ) : (
                 <div className="mt-20 h-[450px] px-6 w-full bg-white flex flex-col justify-center">
-        <div className="font-[700] text-[30px] mb-10">Hey, george</div>
+        <div className="font-[700] text-[30px] mb-10">Hey, {user?.name}</div>
 
         <div className="mb-5 font-[500] text-[18px]">Profile</div>
         <div className="mb-5 font-[500] text-[18px]">Account Settings</div>
