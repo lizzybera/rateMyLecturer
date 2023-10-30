@@ -1,4 +1,3 @@
-import React from "react"
 import styles from "./styles.module.css"
 import {FaGraduationCap} from 'react-icons/fa'
 import { IconContext } from "react-icons";

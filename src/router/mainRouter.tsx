@@ -93,7 +93,7 @@ export const mainRouter = createBrowserRouter ([
         ]
     },
     {
-        path : "/rate-a-professor",
+        path : "/rate-a-professor/:id",
         element : <LayOut  />,
         children : [
             {

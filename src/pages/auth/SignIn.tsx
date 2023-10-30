@@ -9,7 +9,7 @@ import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form"
 import { studentSignIn, studentVerify } from "../../api/studentApis";
-import {jwtDecode} from "jwt-decode"
+
 
 const SignIn = () => {
   const {userID, token} = useParams()
@@ -105,7 +105,7 @@ const SignIn = () => {
             
 
           {/* options */}
-          <div className="w-full flex justify-between items-center mt-7">
+          <div className="flex items-center justify-between w-full mt-7">
             <div className="w-[30%] desktop:w-[25%] h-[1px] bg-gray-300"></div>
             <div className="text-[10px] desktop:text-[15px] ">
               Or Login with email
@@ -114,7 +114,7 @@ const SignIn = () => {
           </div>
 
           {/* form */}
-          <form onSubmit={onHandleSubmit} className="mt-6 w-full">
+          <form onSubmit={onHandleSubmit} className="w-full mt-6">
             {/* input Email */}
             <div>
             <div className="ml-1 font-[600] text-[16px] duration-[300ms] h-[10px] mb-5">

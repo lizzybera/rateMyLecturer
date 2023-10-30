@@ -1,3 +1,5 @@
+
+//@ts-nocheck
 import Header from "../../components/common/Header"
 import { useState, useEffect } from "react"
 import {AiOutlineLike, AiOutlineDislike}  from "react-icons/ai"
@@ -6,12 +8,14 @@ import {GrFlag} from "react-icons/gr"
 import { useParams } from 'react-router-dom';
 import LoadingScreen from "../../components/LoadingScreen";
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 
 const ProfDetailsPage = () => {
     const { id } = useParams();
     const [loading, setLoading] = useState(false)
     const [singleProfessor, setSingleProfessor] = useState([])
+    const navigate = useNavigate();
     useEffect(() => {
         setLoading(true)
         axios.get(
@@ -66,7 +70,9 @@ const ProfDetailsPage = () => {
             </div>
         </div>
 
-        <div className="w-[250px] h-[45px] justify-center items-center flex bg-blue-600 text-white text-[14px] font-[500] rounded-full cursor-pointer hover:bg-blue-800 duration-300 mt-8">
+        <div 
+        onClick={() => navigate(`/rate-a-professor/${list.userId}`)}
+        className="w-[250px] h-[45px] justify-center items-center flex bg-blue-600 text-white text-[14px] font-[500] rounded-full cursor-pointer hover:bg-blue-800 duration-300 mt-8">
             {`Rate ${list.Name}`}
           
         </div>

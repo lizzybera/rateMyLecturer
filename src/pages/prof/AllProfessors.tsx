@@ -1,3 +1,4 @@
+//@ts-nocheck
 import Header from "../../components/common/Header"
 import {CiSaveDown1}  from "react-icons/ci"
 import { useState, useEffect , CSSProperties} from "react"

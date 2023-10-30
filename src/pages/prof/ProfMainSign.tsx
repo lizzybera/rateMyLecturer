@@ -1,13 +1,15 @@
+/* eslint-disable */
+
 import { useState } from "react";
-import * as yup from 'yup'
-import { yupResolver } from "@hookform/resolvers/yup";
-import {useForm} from "react-hook-form"
-import { profRegister } from "../../api/professorApis";
-import { useNavigate } from "react-router-dom";
+// import * as yup from 'yup'
+// import { yupResolver } from "@hookform/resolvers/yup";
+// import {useForm} from "react-hook-form"
+// import { profRegister } from "../../api/professorApis";
+// import { useNavigate } from "react-router-dom";
 
 
 const ProfMainSign = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const [name, setName] = useState<boolean>(false);
   const [firstName, setFirstName] = useState<boolean>(false);
@@ -61,25 +63,25 @@ const ProfMainSign = () => {
     }
   };
 
-  const Schema = yup.object({
-    // email : yup.string().email().required(),
-    // password : yup.string().required()
-  })
+  // const Schema = yup.object({
+  //   // email : yup.string().email().required(),
+  //   // password : yup.string().required()
+  // })
 
-  const { register, handleSubmit} = useForm({
-    resolver : yupResolver(Schema)
-  })
+  // const { register,handleSubmit} = useForm({
+  //   resolver : yupResolver(Schema)
+  // })
 
-  const onHandleSubmit = handleSubmit((data : any) =>{
-    const {email, password} = data
-    console.log("data",data);
+  // const onHandleSubmit = handleSubmit((data : any) =>{
+  //   const {email, password} = data
+  //   console.log("data",data);
     
     
-    profRegister({email, password}).then((res : any) =>{
-      console.log("handleRes", res);
-      navigate("/")
-    })
-  })
+  //   profRegister({email, password}).then((res : any) =>{
+  //     console.log("handleRes", res);
+  //     navigate("/")
+  //   })
+  // })
 
   return (
     <div className="w-full h-[100%] py-10"
@@ -91,7 +93,7 @@ const ProfMainSign = () => {
         onDepartment2()
       }}
     >
-      <div className="py-10 px-10 mobile:px-6 flex flex-col mobile:justify-center"
+      <div className="flex flex-col px-10 py-10 mobile:px-6 mobile:justify-center"
        
       >
            {/* title */}

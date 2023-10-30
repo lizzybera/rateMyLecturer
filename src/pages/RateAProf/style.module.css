@@ -262,6 +262,34 @@
     padding-left: 20px;
 }
 
+.fixedHeader {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100px;
+ 
+    margin-top: 60px;
+
+    background: white;
+    box-shadow: rgba(126, 126, 126, 0.25) 0px 4px 4px;
+    z-index: 999999;
+}
+
+.fixedHeaderContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.fixedHeaderContainer h2 {
+    color: rgb(21, 21, 21);
+    font-size: 1.5rem;
+}
+
+.fixedHeaderContainer p {
+    margin-top: 20px;
+}
+
 
 @media screen and (max-width: 800px) {
     .rateBoxStatus {

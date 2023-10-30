@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useState, useEffect } from 'react'
 import styles from './style.module.css'
 import rateLogo from "../../assets/rate-logo.svg"

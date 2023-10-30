@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import  { useState, useEffect } from "react"
 import styles from "./style.module.css"
 import { LuAlertOctagon } from "react-icons/lu"
 import { IconContext } from "react-icons";
@@ -63,6 +63,12 @@ const RateAProf = () => {
     <div className="w-full h-[100%] py-10">
       <div className="flex flex-col px-10 py-10 mobile:px-6 mobile:justify-center"
       >
+        <div className={styles.fixedHeader}>
+          <div className={styles.fixedHeaderContainer}>
+          <h2>Rate : <b>Joe Conti</b></h2>
+          <p>Philosophy. <span>Fullerton College</span></p>
+          </div>
+        </div>
         <div className={styles.singleRateBox}>
           <h2>Rate your Professor <sup>*</sup></h2>
           <div className={styles.rateBox}>
