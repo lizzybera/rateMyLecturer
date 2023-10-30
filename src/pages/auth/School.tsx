@@ -5,6 +5,7 @@ import { createUser, logOut } from "../../global/GlobalState";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { registerUser } from "../../api/studentApis";
+import Swal from "sweetalert2";
 // import * as yup from 'yup'
 // import { yupResolver } from "@hookform/resolvers/yup";
 // import {useForm} from "react-hook-form"
@@ -180,6 +181,30 @@ const School = () => {
               registerUser({email : user?.email, password : user?.password, school : schooled, name : named}).then((res : any)=>{
                 dispatch(logOut())
                 console.log("res2", res);
+
+                if(res){
+                  Swal.fire({
+                    icon : 'success',
+                    title: 'Congratulations you have sucessfully Registered',
+                    showClass: {
+                      popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                      popup: 'animate__animated animate__fadeOutUp'
+                    }
+                  })
+                }else{
+                  Swal.fire({
+                    icon : 'error',
+                    title: 'Please Input ur information Properly',
+                    showClass: {
+                      popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                      popup: 'animate__animated animate__fadeOutUp'
+                    }
+                  })
+                }
               })
             }}
             >

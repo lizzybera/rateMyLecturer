@@ -13,7 +13,7 @@ const Register = () => {
   const [emailed, setEmailed] = useState<any>(user?.email)
 
   const [email, setEmail] = useState<boolean>(false);
-// console.log(user)
+  
   const onEmail = () => {
     setEmail(!email);
   };
