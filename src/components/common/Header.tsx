@@ -4,21 +4,21 @@ import pics3 from "../../assets/dropdown main.svg";
 import pics4 from "../../assets/apple black.png";
 import { RiGraduationCapFill } from "react-icons/ri";
 import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut, toggleState, toggleState2, toggleState3 } from "../../global/GlobalState";
 import Register from "../../pages/auth/Register";
 import SignIn from "../../pages/auth/SignIn";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LandingDropDown from "./LandingDropDown";
+import { LiaAppleAltSolid } from "react-icons/lia";
+import axios from "axios";
+import styles from './style.module.css'
+import { IconContext } from "react-icons";
 
-interface HeaderProps {
-  inputValue?: any;
- setInputValue?: any;
-}
 
-
-const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
+const Header  = () => {
+  const navigate = useNavigate()
   const user = useSelector((state : any) => state.user)
   const dispatch = useDispatch();
   const toggle = useSelector((state: any) => state.toggle);
@@ -50,6 +50,43 @@ const onDrop = () =>{
     setDrop(!drop)
   }
 
+  const [showed, setShowed] = useState<boolean>(false)
+
+  const onShowed = ()=>{
+    setShowed(!showed)
+  }
+
+  const [profileInput, setProfileInput] = useState("")
+
+    const [loading, setLoading] = useState(true)
+
+    const [allProfessors, setAllProfessors] = useState([])
+
+
+    useEffect(() => {
+      setLoading(true)
+      axios.get(
+          `https://lecturer-rating.onrender.com/api/prof`
+      )
+          .then((response) => {
+              setLoading(false)
+              console.log(response)
+              const filteredProfessors = response.data.data.filter((person : any) => person.Name.toLowerCase().includes(profileInput.toLowerCase()));
+              setAllProfessors(filteredProfessors)
+          })
+          .catch((err) => {
+              console.log(err)
+              setLoading(false)
+          })
+  }, [profileInput])
+
+
+    // const setFunnabActiveFunction = () => {
+    //     setFunnabActive(true);
+    //     setOtherSchoolActive(false);
+    // }
+console.log(profileInput);
+
   return (
     <>
       {toggle && <Register />}
@@ -73,7 +110,7 @@ const onDrop = () =>{
             <img className="mr-12" src={pics} alt="logo" />
 
             <div className="flex ml-7 headerLarge:hidden">
-              {show2 ? (
+              {!show2 ? (
                 //  search1
                 <div className="flex items-center justify-center h-full">
                   <div className="flex items-center cursor-pointer">
@@ -101,13 +138,100 @@ const onDrop = () =>{
 
                     {/* search bar  */}
 
+                    
                     <div className="flex ml-10 text-black smallLaptop:ml-5 tablet:ml-4">
-                      <input
+                      
+
+{/*                     
+                          <input
+                        type="text"
+                        placeholder="professor nameeeddddd"
+                        className="w-[350px] h-[40px] rounded-full px-5 outline-none desktop:ml-1 smallLaptop:ml-1"
+                        onClick={()=>{
+                          onShowed()
+                        }}
+                      />  */}
+                     
+                      
+                          <div>
+                           <>
+                           <input
                         type="text"
                         placeholder="professor name"
+                        value={profileInput} onChange={(e) => setProfileInput(e.target.value)}
                         className="w-[350px] h-[40px] rounded-full px-5 outline-none desktop:ml-1 smallLaptop:ml-1"
-                      />
+                         />
+                           </>
 
+                        {profileInput.length > 0 && (
+                          <div className={styles.newDropDown} id="style-1">
+                              <div>
+                              <input
+                        type="text"
+                        placeholder="professor name"
+                        value={profileInput} onChange={(e) => setProfileInput(e.target.value)}
+                        className="w-[350px] h-[40px] rounded-full px-5 outline-none desktop:ml-1 smallLaptop:ml-1"
+                        onClick={()=>{
+                          onShowed()
+                        }} />
+
+                              </div>
+
+                             <div>
+                             {loading ? (
+                                  <div className={styles.loaderContainer}>
+                                      <span className={styles.loader}></span>
+                                  </div>
+                              ) : (
+                                  <div>
+                                      {allProfessors.length > 0 ? (
+                                          <>
+                                              {allProfessors?.map((list: any) => {
+                                                  return (
+                                                      <div
+                                                          className={styles.parentListContainer}
+                                                          onClick={() => navigate(`/professor-details/${list.userId}`)}
+                                                      >
+                                                          <div className={styles.firstContainer}>
+  
+                                                              <span className="changeColor">
+                                                                  <IconContext.Provider
+                                                                      value={{ size: '30px' }}
+                                                                  >
+                                                                      <LiaAppleAltSolid
+                                                                          onMouseOver={({ target }) => target.style.color = "white"}
+                                                                          onMouseOut={({ target }) => target.style.color = "black"} />
+                                                                  </IconContext.Provider>
+                                                              </span>
+                                                          </div>
+                                                          <div className={styles.secondContainer}>
+                                                              <h1>{list.Name}</h1>
+                                                              <div className={styles.secondContainerHolder}>
+                                                                  <p className={styles.listDepartment}>{list.Professional_Department}</p>
+                                                                  <p className={styles.dotCover}>.</p>
+                                                                  <p className={styles.listCollege}>{list.school}</p>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  )
+                                              })}
+                                          </>
+                                      ) : (
+                                          <div className={styles.noProfessor}>
+                                              <p>Professor not found</p>
+                                          </div>
+                                      )}
+  
+                                  </div>
+                              )}
+                             </div>
+  
+                          </div>
+                      )}
+                        
+                          </div>
+
+                     
                       <input
                         type="text"
                         placeholder="professor school"
@@ -151,8 +275,8 @@ const onDrop = () =>{
                     <div className="flex ml-5 text-black desktop:ml-2">
                       <input
                         type="text"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
+                        // value={inputValue}
+                        // onChange={(e) => setInputValue(e.target.value)}
                         placeholder="Enter your School name"
                         className="w-[750px] h-[40px] rounded-full px-5 outline-none smallLaptop:w-[740px]"
                       />
