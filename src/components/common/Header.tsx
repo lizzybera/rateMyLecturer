@@ -17,10 +17,17 @@ import styles from './style.module.css'
 import { IconContext } from "react-icons";
 
 
-const Header  = () => {
+interface HeaderProps {
+  inputValue?: any;
+ setInputValue?: any;
+}
+
+
+const Header : React.FC<HeaderProps> = ({inputValue, setInputValue}) => {
   const navigate = useNavigate()
   const user = useSelector((state : any) => state.user)
   const dispatch = useDispatch();
+
   const toggle = useSelector((state: any) => state.toggle);
   const toggle2 = useSelector((state: any) => state.toggle2);
   const toggle3 = useSelector((state: any) => state.toggle3);
@@ -36,6 +43,14 @@ const Header  = () => {
   const [show2, setShow2] = useState<boolean>(false);
   const [dropdown, setDropdown] = useState<boolean>(false);
   const [dropdown2, setDropdown2] = useState<boolean>(false);
+
+  const handleKeyPress = (event: any) => {
+    if (event.key === 'Enter') {
+      // Execute your function here
+ 
+      navigate("/profs/all")
+    }
+  };
 
   const onDropDown = () => {
     setDropdown(!dropdown);
@@ -119,9 +134,11 @@ console.log(profileInput);
             {/* logo */}
 {
   !search ? (
-    <img className="mr-12" src={pics} alt="logo" />
+    <img className="mr-12" src={pics} alt="logo" onClick={() => navigate("/")}/>
   ) : null
 }
+         
+
             <div className="flex ml-7 headerLarge:hidden">
               {!show2 ? (
                 //  search1
@@ -267,7 +284,7 @@ console.log(profileInput);
                         <img
                           src={pics3}
                           alt="dropdown"
-                          className="ml-3 rotate-180 mr-8"
+                          className="ml-3 mr-8 rotate-180"
                         />
                       )}
                     </div>
@@ -277,9 +294,10 @@ console.log(profileInput);
                     <div className="flex ml-5 text-black desktop:ml-2">
                       <input
                         type="text"
-                        // value={inputValue}
-                        // onChange={(e) => setInputValue(e.target.value)}
-                        placeholder="Enter your School name"
+                        value={inputValue}
+                        onKeyPress={handleKeyPress}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        placeholder="Enter your Professor name"
                         className="w-[750px] h-[40px] rounded-full px-5 outline-none smallLaptop:w-[740px]"
                       />
                     </div>

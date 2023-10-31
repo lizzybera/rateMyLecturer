@@ -4,13 +4,14 @@ import {CiSaveDown1}  from "react-icons/ci"
 import { useState, useEffect , CSSProperties} from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import LoadingScreen from "../../components/LoadingScreen"
 
 
 
 const AllProfessors = () => {
   const [allProfessors, setAllProfessors] = useState([])
   const [loading, setLoading] = useState(false);
-  const [inputValue, setInputValue]= useState("he")
+  const [inputValue, setInputValue]= useState("")
   const navigate = useNavigate()
   console.log(allProfessors)
   useEffect(() => {
@@ -69,7 +70,8 @@ const codeToStatus: (code: any) => {
       };
   return (
       <>
-        <Header />
+      {loading && <LoadingScreen />}
+        <Header inputValue={inputValue} setInputValue={setInputValue}/>
         <div className='w-full min-h-[100vh]'>
       <div className="pt-[100px] px-10 w-[1000px] headerMedium:w-full ">
 
