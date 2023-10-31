@@ -68,7 +68,7 @@ const SignIn = () => {
       }else{
         Swal.fire({
           icon : 'error',
-          title: 'Please check Your password or email',
+          title: 'Please check Your password or email and make sure your account is verified',
           showClass: {
             popup: 'animate__animated animate__fadeInDown'
           },
@@ -210,7 +210,7 @@ const SignIn = () => {
 
           <div className="my-7">
             Don't have an account?
-            <Link to="/">
+            <Link to="/register">
             <span className="text-blue-700 cursor-pointer font-[700] ml-1">Sign Up</span>
             </Link>
           </div>

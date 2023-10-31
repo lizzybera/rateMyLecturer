@@ -9,10 +9,11 @@ import Swal from "sweetalert2";
 // import * as yup from 'yup'
 // import { yupResolver } from "@hookform/resolvers/yup";
 // import {useForm} from "react-hook-form"
+import { useNavigate } from "react-router-dom";
 
 const School = () => {
   const dispatch = useDispatch()
-//   const navigate = useNavigate()
+  const navigate = useNavigate()
   const user : any = useSelector((state : any) => state.user)
   // console.log(user)
   const [school, setSchool] = useState<boolean>(false);
@@ -185,7 +186,7 @@ const School = () => {
                 if(res){
                   Swal.fire({
                     icon : 'success',
-                    title: 'Congratulations you have sucessfully Registered',
+                    title: 'Congratulations you have sucessfully Registered. Check your email to verify your account',
                     showClass: {
                       popup: 'animate__animated animate__fadeInDown'
                     },
@@ -193,6 +194,7 @@ const School = () => {
                       popup: 'animate__animated animate__fadeOutUp'
                     }
                   })
+                  setTimeout(() => navigate("/"), 5000);
                 }else{
                   Swal.fire({
                     icon : 'error',

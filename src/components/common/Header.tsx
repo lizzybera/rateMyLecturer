@@ -40,7 +40,7 @@ const Header : React.FC<HeaderProps> = ({inputValue, setInputValue}) => {
 
   const [drop, setDrop] = useState<boolean>(false)
   const [show, setShow] = useState<boolean>(false);
-  const [show2, setShow2] = useState<boolean>(false);
+  const [show2, setShow2] = useState<boolean>(true);
   const [dropdown, setDropdown] = useState<boolean>(false);
   const [dropdown2, setDropdown2] = useState<boolean>(false);
 
@@ -146,10 +146,10 @@ console.log(profileInput);
                   <div className="flex items-center cursor-pointer">
                     <div
                       className="flex items-center"
-                      onClick={() => {
-                        onDropDown();
-                        onShow();
-                      }}
+                      // onClick={() => {
+                      //   onDropDown();
+                      //   onShow();
+                      // }}
                     >
                       <img src={pics2} alt="logo" className="" />
 
@@ -266,10 +266,10 @@ console.log(profileInput);
                   <div className="flex items-center cursor-pointer">
                     <div
                       className="flex items-center"
-                      onClick={() => {
-                        onDropDown2();
-                        onShow();
-                      }}
+                      // onClick={() => {
+                      //   onDropDown2();
+                      //   onShow();
+                      // }}
                     >
                       {/* <img src={pics2} alt="logo" />  */}
                       <div className="text-[20px] smallLaptop:hidden">
@@ -309,10 +309,10 @@ console.log(profileInput);
               {dropdown ? (
                 <div
                   className="w-[180px] h-[65px] bg-white absolute left-[150px] smallLaptop:left-[100px] hover:bg-[blue]  shadow-lg top-[55px] flex items-center px-4 rounded-md cursor-pointer  text-black hover:text-white font-[500]"
-                  onClick={() => {
-                    onDropDown();
-                    onShow2();
-                  }}
+                  // onClick={() => {
+                  //   onDropDown();
+                  //   onShow2();
+                  // }}
                 >
                   <div className="flex items-center">
                     {/* <img src={pics2} alt="logo" className="bg-black"/> */}
@@ -329,10 +329,10 @@ console.log(profileInput);
               {dropdown2 ? (
                 <div
                   className="w-[180px] h-[65px] bg-white absolute left-[150px] hover:bg-[blue] smallLaptop:left-[100px] shadow-lg top-[55px] flex items-center px-4 rounded-md cursor-pointer  text-black hover:text-white font-[500]"
-                  onClick={() => {
-                    onShow2();
-                    onDropDown2();
-                  }}
+                  // onClick={() => {
+                  //   onShow2();
+                  //   onDropDown2();
+                  // }}
                 >
                   <div className="flex items-center">
                     <div className="text-[20px] ">
