@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleState, toggleState2 } from "../../global/GlobalState";
 import Register from "../../pages/auth/Register";
 import SignIn from "../../pages/auth/SignIn";
+import { useNavigate } from "react-router";
 
 interface HeaderProps {
   inputValue?: any;
@@ -18,6 +19,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const toggle = useSelector((state: any) => state.toggle);
   const toggle2 = useSelector((state: any) => state.toggle2);
 
@@ -25,6 +27,14 @@ const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
   const [show2, setShow2] = useState<boolean>(false);
   const [dropdown, setDropdown] = useState<boolean>(false);
   const [dropdown2, setDropdown2] = useState<boolean>(false);
+
+  const handleKeyPress = (event: any) => {
+    if (event.key === 'Enter') {
+      // Execute your function here
+ 
+      navigate("/profs/all")
+    }
+  };
 
   const onDropDown = () => {
     setDropdown(!dropdown);
@@ -55,7 +65,7 @@ const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
           {/* logo / search */}
           <div className="flex items-center h-full">
             {/* logo */}
-            <img className="mr-12" src={pics} alt="logo" />
+            <img className="mr-12" src={pics} alt="logo" onClick={() => navigate("/")}/>
 
             <div className="flex ml-7 headerLarge:hidden">
               {show2 ? (
@@ -137,6 +147,7 @@ const Header: React.FC<HeaderProps > = ({inputValue, setInputValue}) => {
                       <input
                         type="text"
                         value={inputValue}
+                        onKeyPress={handleKeyPress}
                         onChange={(e) => setInputValue(e.target.value)}
                         placeholder="Enter your Professor name"
                         className="w-[750px] h-[40px] rounded-full px-5 outline-none smallLaptop:w-[740px]"
