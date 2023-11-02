@@ -37,3 +37,11 @@ export const studentVerify = async (userID : any, token : any) =>{
         console.log(error);
     }
 }
+
+export const googleSignIn = async () =>{
+    try {
+        return await axios.get("https://lecturer-rating.onrender.com/api/auth/google")
+    } catch (error) {
+        console.log(error);
+    }
+}
