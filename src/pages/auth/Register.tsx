@@ -4,6 +4,7 @@ import { GrFormClose } from "react-icons/gr";
 import { Link, useNavigate } from "react-router-dom";
 import { changedToggle, createUser } from "../../global/GlobalState";
 import { useDispatch, useSelector} from "react-redux";
+import { googleSignIn } from "../../api/studentApis";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -60,8 +61,16 @@ const Register = () => {
           </div>
 
           {/* google sign up w-[350px] */}
-          <div className="w-full h-[50px] rounded-[25px] border-gray-300 border mt-3 flex justify-center items-center hover:cursor-pointer hover:scale-[1.1] duration-[350ms]">
-            <div className="text-[25px] text-green-600">
+          <div className="w-full h-[50px] rounded-[25px] border-gray-300 border mt-3 flex justify-center items-center hover:cursor-pointer hover:scale-[1.1] duration-[350ms]"
+          onClick={()=>{
+            googleSignIn().then((res)=>{
+              console.log(res);
+              console.log("hello");
+              
+            })
+          }}
+          >
+            <div className="text-[25px]">
               {" "}
               <FcGoogle />{" "}
             </div>
