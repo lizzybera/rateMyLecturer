@@ -11,21 +11,21 @@ import { useState } from "react";
 const ProfMainSign = () => {
   // const navigate = useNavigate()
 
-  const [name, setName] = useState<boolean>(false);
+  // const [name, setName] = useState<boolean>(false);
   const [firstName, setFirstName] = useState<boolean>(false);
   const [middleName, setMiddleName] = useState<boolean>(false);
   const [lastName, setLastame] = useState<boolean>(false);
   const [department, setDepartment] = useState<boolean>(false);
 
-  const onName = () => {    
-    setName(!name);
-  };
+  // const onName = () => {    
+  //   setName(!name);
+  // };
 
-  const onName2 = () => {
-    if(name === true){
-      setName(false)
-    }
-  };
+  // const onName2 = () => {
+  //   if(name === true){
+  //     setName(false)
+  //   }
+  // };
   const onFirstName = () => {    
     setFirstName(!firstName);
   };
@@ -86,7 +86,7 @@ const ProfMainSign = () => {
   return (
     <div className="w-full h-[100%] py-10"
     onClick={()=>{
-        onName2()
+        // onName2()
         onLastName2()
         onFirstName2()
         onMiddleName2()
@@ -105,27 +105,18 @@ const ProfMainSign = () => {
             {/* form */}
             <div className="w-[450px] mt-10 mobile:w-full">
 
-              <div className="w-full mb-4">
-                <div>Name of School</div>
+            <div className="w-full mb-4 ">
+                <div>School</div>
                 
                <div className="mt-1">
-               {!name ? (
-              <input
-                // type="name"
-                className="w-full h-[40px] bg-white border border-gray-300 px-4 placeholder:text-black outline-0 rounded-sm"
-                onClick={() => {
-                  onName();
-                }}
-              />
-            ) : (
-              <input
-                // type="name"
-                className="w-full h-[40px] bg-white border border-black px-4 outline-0 rounded-sm"
-                onClick={() => {
-                  onName();
-                }}
-              />
-            )}
+              <select className="w-full h-[40px] bg-white border border-gray-300 px-4 placeholder:text-black outline-0 rounded-sm" >
+                <option value=""></option>
+                <option value="University of Lagos">University of Lagos</option>
+                <option value="Yaba College of Education">Yaba College of Education</option>
+                <option value="Lagos State University">Lagos State University</option>
+                <option value="Funab">Funab</option>
+                <option value="Civil Enginering">Civil Enginering</option>
+              </select>
                </div>
 
               </div>
@@ -214,6 +205,9 @@ const ProfMainSign = () => {
                 <option value=""></option>
                 <option value="Computer Science">Computer Science</option>
                 <option value="Food Technology">Food Technology</option>
+                <option value="Bussiness Administration">Bussiness Administration</option>
+                <option value="Computer Enginering">Computer Enginering</option>
+                <option value="Civil Enginering">Civil Enginering</option>
               </select>
                </div>
 
