@@ -197,7 +197,12 @@ const SignIn = () => {
 
             <div className="text-blue-700 font-[700] w-full flex justify-center items-cente mt-5 ml-1">Forgot your password?</div>
 
-            <button type="submit" className="w-full h-[45px] duration-[350ms] rounded-[25px] border border-[blue] mt-[30px] flex justify-center items-center text-white bg-black hover:cursor-pointer hover:scale-[1.1] ">
+            <button type="submit" className="w-full h-[45px] duration-[350ms] rounded-[25px] border border-[blue] mt-[30px] flex justify-center items-center text-white bg-black hover:cursor-pointer hover:scale-[1.1] "
+            onClick={()=>{
+              console.log("clicked");
+              
+            }}
+            >
               <div className="font-[700] text-[13px] ml-2">Continue</div>
             </button>
           </form>
