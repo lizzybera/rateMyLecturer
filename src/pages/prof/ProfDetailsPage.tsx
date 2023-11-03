@@ -33,6 +33,28 @@ const ProfDetailsPage = () => {
 
             })
     }, [id])
+    const [avergeRating, setAverageRating] = useState("")
+    const [numberOfRaters, setNumberOfRaters] = useState([])
+
+    useEffect(() => {
+        setLoading(true)
+        axios.get(
+            `https://lecturer-rating.onrender.com/api/prof/rating/${singleProfessor.userId}`
+        )
+            .then((response) => {
+                setLoading(false)
+                console.log(response, "hello")
+                setAverageRating(response.data.averageRating);
+                setNumberOfRaters(response.data.raters)
+            })
+            .catch((err) => {
+                console.log(err)
+                setLoading(false)
+
+            })
+    }, [id])
+    console.log(singleProfessor)
+
     useEffect(() => {
         setLoading(true)
         axios.get(
@@ -49,8 +71,7 @@ const ProfDetailsPage = () => {
 
             })
     }, [id])
-    console.log(singleProfessor)
-    function getRandomObjectsFromArray(array, count) {
+    function getRandomObjectsFromArray(array: any, count: any) {
         const randomObjects = [];
         const arrayCopy = [...array]; // Create a copy of the original array to avoid modifying it.
 
@@ -79,10 +100,10 @@ const ProfDetailsPage = () => {
                                 {/* first part */}
 
                                 <div className="w-[33%] h-full headerMedium:w-full ">
-                                    <div className="font-[700] text-[80px]">{`${list.__v}.0`}</div>
+                                    <div className="font-[700] text-[80px]">{`${avergeRating}`}</div>
 
                                     <div className="font-[700] text-[14px] -mt-3">
-                                        Overall Quality Based on 4  <span className="underline cursor-pointer">ratings</span>
+                                        Overall Quality Based on {numberOfRaters.length}  <span className="underline cursor-pointer">ratings</span>
                                     </div>
 
                                     <div className="font-[700] text-[40px] mt-4">{list.Name}</div>
