@@ -14,8 +14,8 @@ const FrontPage = () => {
             <LandingHeader />
             <Home />
               <div className={styles.rpmParentContainer}>
-            <h1>Join the RMP Family</h1>
-                <h3>Love RMP? Let's make it official.</h3>
+            <h1>Join the RML Family</h1>
+                <h3>Love RML? Let's make it official.</h3>
 
             <div className={styles.rmpContainer}>
              
