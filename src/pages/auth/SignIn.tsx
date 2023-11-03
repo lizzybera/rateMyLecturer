@@ -10,6 +10,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form"
 import { studentSignIn, studentVerify } from "../../api/studentApis";
 import Swal from "sweetalert2";
+import LoadingScreen from "../../components/LoadingScreen";
+import axios from "axios";
 
 
 const SignIn = () => {
@@ -19,6 +21,7 @@ const SignIn = () => {
   const [parent]  = useAutoAnimate()
   const [email, setEmail] = useState<boolean>(false);
   const [password, setPassword] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false)
 
   const onEmail = () => {
     setEmail(!email);
@@ -68,7 +71,7 @@ const SignIn = () => {
       }else{
         Swal.fire({
           icon : 'error',
-          title: 'Please check Your password or email',
+          title: 'Please check Your password or email and make sure your account is verified',
           showClass: {
             popup: 'animate__animated animate__fadeInDown'
           },
@@ -86,6 +89,9 @@ const SignIn = () => {
       studentVerify(userID,token)
     }
   })
+
+
+ 
 
   return (
     <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10 fixed  text-black z-[100]" ref={parent}>
@@ -215,7 +221,7 @@ const SignIn = () => {
 
           <div className="my-7">
             Don't have an account?
-            <Link to="/">
+            <Link to="/register">
             <span className="text-blue-700 cursor-pointer font-[700] ml-1">Sign Up</span>
             </Link>
           </div>

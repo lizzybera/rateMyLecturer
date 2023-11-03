@@ -5,9 +5,15 @@ import { IconContext } from "react-icons";
 import { useParams } from "react-router";
 import axios from "axios";
 import LoadingScreen from "../../components/LoadingScreen";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const RateAProf = () => {
  const {id} = useParams();
+ const user = useSelector((state : any) => state.user)
+ console.log(user, "the user")
   const [professorRating, setProfessorRating] = useState<number>(0)
   const [professorDifficulty, setProfessorDifficulty] = useState<number>(0)
   const [professorRatingMessage, setProfessorRatingMessage] = useState("")
@@ -17,6 +23,11 @@ const RateAProf = () => {
   const [creditClass, setCreditClass] = useState("none")
   const [useTextBooks, setUseTextBook] = useState("none")
   const [mandatory, setMandetory] = useState("none")
+  const [comment, setComment] = useState("")
+
+
+
+ 
 
   const handletakeProfessor = (event: any) => {
     setTakeProfessorAgain(event.target.value);
@@ -85,6 +96,38 @@ const RateAProf = () => {
 
   console.log(singleProfessor)
 
+  const addARating = () => {
+    if (professorRating === 0) {
+      toast.error("Please add a rating for this lecturer")
+    }
+    else if (professorRating === 0) {
+      toast.error("Please add a difficulty for this lecturer")
+    }
+    else if (comment?.length < 1) {
+      toast.error("Please add a comment for this lecturer")
+    }
+    else {
+      setLoading(true)
+      axios.post(
+        `https://lecturer-rating.onrender.com/api/user/${user._id}/${singleProfessor.userId}`,
+        {
+          rating: professorRating,
+          comments: comment
+        }
+      )
+      .then((response) => {
+        toast.success("Lecturar rated successfully")
+        setLoading(false)
+    })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false)
+      toast.error("Lecturer rating unsuccessful, Please make sure you've not rated this lecturer before")
+      });
+    }
+  
+  }
+
   return (
     <div className="w-full h-[100%] py-10">
       {loading && (<LoadingScreen/>)}
@@ -92,6 +135,7 @@ const RateAProf = () => {
 return (
   <div className="flex flex-col px-10 py-10 mobile:px-6 mobile:justify-center"
   >
+
     <div className={styles.fixedHeader}>
       <div className={styles.fixedHeaderContainer}>
       <h2>Rate : <b>{list.Name}</b></h2>
@@ -99,13 +143,24 @@ return (
       </div>
     </div>
     <div className={`${styles.singleRateBox} ${styles.newRateBox}`}>
-      <h2>Rate your Professor <sup>*</sup></h2>
+      <h2>Rate your Lecturer<sup>*</sup></h2>
       <div className={styles.rateBox}>
         <div
           className={`${professorRating === 5 && styles.fifthElementActive} ${styles.fifthElement}`}
           onClick={() => setProfessorRating(5)}
         ></div>
-        <div
+    <ToastContainer
+position="bottom-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>    <div
           className={`${professorRating >= 4 && styles.forthElementActive} ${styles.forthElement}`}
           onClick={() => setProfessorRating(4)}
         ></div>
@@ -137,7 +192,7 @@ return (
       )}
     </div>
     <div className={styles.singleRateBox}>
-      <h2>How difficult was this professor?<sup>*</sup></h2>
+      <h2>How difficult was this Lecturer?<sup>*</sup></h2>
       <div className={styles.rateBox}>
         <div
           className={`${professorDifficulty === 5 && styles.fifthElementActive} ${styles.fifthElement}`}
@@ -176,7 +231,7 @@ return (
 
     </div>
     <div className={styles.singleRateBox}>
-      <h2>Would you take this professor again?<sup>*</sup></h2>
+      <h2>Would you take this lecturer again?<sup>*</sup></h2>
       <div className={styles.inputBoxFlex}>
         <div className={styles.inputContainer}>
           <input
@@ -234,7 +289,7 @@ return (
 
     </div>
     <div className={styles.singleRateBox}>
-      <h2>Did this professor use textbooks?<sup>*</sup></h2>
+      <h2>Did this lecturer use textbooks?<sup>*</sup></h2>
       <div className={styles.inputBoxFlex}>
         <div className={styles.inputContainer}>
           <input
@@ -295,7 +350,7 @@ return (
       <h2>Write a Review<sup>*</sup></h2>
 
       <p className={styles.paragraph}>
-        Discuss the professor's professional abilities including teaching style and ability to convey the material clearly
+        Discuss the lecturer's professional abilities including teaching style and ability to convey the material clearly
       </p>
       <div className={styles.guideLineBox}>
         <div className={styles.guideLineHeader}>
@@ -310,22 +365,24 @@ return (
         </div>
         <ul>
           <li>Your rating could be removed if you use profanity or derogatory terms.</li>
-          <li>Don't claim that the professor shows bias or favoritism for or against students.</li>
+          <li>Don't claim that the lecturer shows bias or favoritism for or against students.</li>
           <li>Don’t forget to proof read!</li>
         </ul>
         <p className={styles.viewLink}>View all guidelines</p>
        
       </div>
       <input
-         placeholder="what do you want other students to know about this professor?" 
+         placeholder="what do you want other students to know about this lecturer?" 
          className={styles.newInput}
+         value={comment}
+         onChange={(e) => setComment(e.target.value)}
          />
     </div>
 
     <div className={styles.singleRateBox}>
       <div className={styles.subContainer}>
-      <p>By clicking the "Submit" button, I acknowledge that I have read and agreed to the Rate My Professors Site Guidelines, Terms of Use and Privacy Policy. Submitted data becomes the property of RateMyProfessors.com. IP addresses are logged.</p>
-      <button>Submit Rating</button>
+      <p>By clicking the "Submit" button, I acknowledge that I have read and agreed to the Rate My Lecturer's Site Guidelines, Terms of Use and Privacy Policy. Submitted data becomes the property of RateMyProfessors.com. IP addresses are logged.</p>
+      <button onClick={addARating}>Submit Rating</button>
       </div>
       
     
