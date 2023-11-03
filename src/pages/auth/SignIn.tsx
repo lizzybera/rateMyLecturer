@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form"
 import { studentSignIn, studentVerify } from "../../api/studentApis";
 import Swal from "sweetalert2";
+import LoadableScreen from "./LoadableScreen";
 
 
 const SignIn = () => {
@@ -19,6 +20,7 @@ const SignIn = () => {
   const [parent]  = useAutoAnimate()
   const [email, setEmail] = useState<boolean>(false);
   const [password, setPassword] = useState<boolean>(false);
+  const [tog, setTog] = useState<boolean>(false)
 
   const onEmail = () => {
     setEmail(!email);
@@ -47,10 +49,12 @@ const SignIn = () => {
   })
 
   const onHandleSubmit = handleSubmit((data : any) =>{
-    const {email, password} = data    
+    const {email, password} = data   
+    setTog(true)
     
     studentSignIn({email, password}).then((res : any) =>{
       console.log("handleRes", res);
+      setTog(false)
       if(res){
         Swal.fire({
           icon : 'success',
@@ -64,7 +68,8 @@ const SignIn = () => {
         })
         dispatch(createUser(res.user))
         navigate("/")
-          dispatch(changedToggle2())
+    dispatch(changedToggle2())
+          
       }else{
         Swal.fire({
           icon : 'error',
@@ -76,7 +81,8 @@ const SignIn = () => {
             popup: 'animate__animated animate__fadeOutUp'
           }
         })
-        dispatch(changedToggle2())
+    dispatch(changedToggle2())
+
       }
     })
   })
@@ -88,7 +94,9 @@ const SignIn = () => {
   })
 
   return (
-    <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10 fixed  text-black z-[100]" ref={parent}>
+    <>
+    {tog && <LoadableScreen />}
+      <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10 fixed  text-black z-[50]" ref={parent}>
       {/* form the body */}
       <div className="w-[90%] tab:w-[550px] bg-white  p-3 desktop:flex desktop:justify-center desktop:items-center desktop:flex-col shadow-2xl"
       onClick={()=>{
@@ -222,6 +230,7 @@ const SignIn = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

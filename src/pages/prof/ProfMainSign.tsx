@@ -1,12 +1,6 @@
 /* eslint-disable */
 
 import { useState } from "react";
-// import * as yup from 'yup'
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import {useForm} from "react-hook-form"
-// import { profRegister } from "../../api/professorApis";
-// import { useNavigate } from "react-router-dom";
-
 
 const ProfMainSign = () => {
   // const navigate = useNavigate()
@@ -17,15 +11,7 @@ const ProfMainSign = () => {
   const [lastName, setLastame] = useState<boolean>(false);
   const [department, setDepartment] = useState<boolean>(false);
 
-  // const onName = () => {    
-  //   setName(!name);
-  // };
 
-  // const onName2 = () => {
-  //   if(name === true){
-  //     setName(false)
-  //   }
-  // };
   const onFirstName = () => {    
     setFirstName(!firstName);
   };
@@ -63,25 +49,6 @@ const ProfMainSign = () => {
     }
   };
 
-  // const Schema = yup.object({
-  //   // email : yup.string().email().required(),
-  //   // password : yup.string().required()
-  // })
-
-  // const { register,handleSubmit} = useForm({
-  //   resolver : yupResolver(Schema)
-  // })
-
-  // const onHandleSubmit = handleSubmit((data : any) =>{
-  //   const {email, password} = data
-  //   console.log("data",data);
-    
-    
-  //   profRegister({email, password}).then((res : any) =>{
-  //     console.log("handleRes", res);
-  //     navigate("/")
-  //   })
-  // })
 
   return (
     <div className="w-full h-[100%] py-10"

@@ -16,6 +16,7 @@ import ProfilePage from "../pages/profilePage/ProfilePage"
 import AccountSettings from "../pages/profilePage/AccountSettings"
 import Ratings from "../pages/profilePage/Ratings"
 import SavedProfessors from "../pages/profilePage/SavedProfessors"
+import LoadableScreen from "../pages/auth/LoadableScreen"
 
 export const mainRouter = createBrowserRouter ([
     {
@@ -33,6 +34,10 @@ export const mainRouter = createBrowserRouter ([
     {
         path : "/ratings",
         element : <Ratings />
+    },
+    {
+        path : "/loadable",
+        element : <LoadableScreen />
     },
     {
         path : "/acct-settings",
