@@ -49,10 +49,10 @@ const LandingDropDown = () => {
                 <div className="mt-20 h-[450px] px-6 w-full bg-white flex flex-col justify-center">
         <div className="font-[700] text-[30px] mb-10">Hey, {user?.name}</div>
 
-        <div className="mb-5 font-[500] text-[18px]">Profile</div>
+        {/* <div className="mb-5 font-[500] text-[18px]">Profile</div>
         <div className="mb-5 font-[500] text-[18px]">Account Settings</div>
         <div className="mb-5 font-[500] text-[18px]">Your Ratings</div>
-        <div className=" font-[500] text-[18px]">My Saved Professors</div>
+        <div className=" font-[500] text-[18px]">My Saved Professors</div> */}
 
         <div className="flex w-[full] justify-center text-[23px] mt-10 cursor-pointer flex-col items-center" >
             <div className="mb-5 text-[17px]"

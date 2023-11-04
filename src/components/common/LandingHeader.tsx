@@ -72,7 +72,7 @@ const LandingHeader = () => {
                   drop ? (
                     <>
                       <div className="w-[180px] rounded-md bg-white shadow-2xl absolute right-[90px] top-[67px] z-[100] text-[13px] font-[700] headerMedium:hidden flex flex-col ">
-                 <Link to="/profile">
+                 {/* <Link to="/profile">
                  <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3 rounded-t-md">Profile</div>
                  </Link>
 
@@ -86,7 +86,7 @@ const LandingHeader = () => {
 
                 <Link to="/saved-prof">
                 <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3">Saved Professors</div>
-                </Link>
+                </Link> */}
 
                  <div className="w-full h-[40px] hover:text-white  hover:bg-blue-700 cursor-pointer flex items-center px-3"
                  onClick={()=>{

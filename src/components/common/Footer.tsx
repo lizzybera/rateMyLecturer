@@ -38,7 +38,7 @@ const Footer = () => {
 
          {/* first footer  */}
          <div className="flex justify-between w-full items-center headerMedium:flex-col-reverse headerMedium:items-center headerMedium:ml-3">
-            <div className="text-[13px] text-center">© 2023 Altice USA News, Inc. All Rights Reserved</div>
+            <div className="text-[13px] text-center">© 2023 Rate My Lecturer. All Rights Reserved</div>
             <div className="flex text-[23px] justify-between items-center headerMedium:flex-col-reverse">
                     <div  className="flex w-[100px] justify-between">
                         <BiLogoFacebookSquare />
@@ -110,7 +110,7 @@ const Footer = () => {
                         <BiLogoTwitter />
                         <BiLogoInstagram />
 </div>
-            <div className="text-[14px] text-center">© 2023 Altice USA News, Inc. All Rights Reserved</div>
+            <div className="text-[14px] text-center">© 2023 Rate My Lecturer. All Rights Reserved</div>
         </div>
         </div>
 

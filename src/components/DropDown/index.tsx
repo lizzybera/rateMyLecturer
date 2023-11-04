@@ -21,7 +21,7 @@ const DropDown = ({profileInput, setProfileInput} : Props) => {
 
                 </div>
                 <input 
-                placeholder="Search for a Professor" 
+                placeholder="Search for a Lecturer" 
                 value={profileInput} 
                 onChange={(e) => setProfileInput(e.target.value)}
                 />

@@ -300,7 +300,7 @@ console.log(profileInput);
                         value={inputValue}
                         onKeyPress={handleKeyPress}
                         onChange={(e) => setInputValue(e.target.value)}
-                        placeholder="Enter your Professor name"
+                        placeholder="Enter your Lecturer name"
                         className="w-[750px] h-[40px] rounded-full px-5 outline-none smallLaptop:w-[740px]"
                       />
                     </div>

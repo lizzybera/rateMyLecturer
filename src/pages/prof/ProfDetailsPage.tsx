@@ -173,7 +173,7 @@ const ProfDetailsPage = () => {
 
                                     <div className="font-[700] text-[40px] mt-4">{list.Name}</div>
 
-                                    <div className=" text-[14px] w-[400px]">Professor in the <span className="font-[700] underline cursor-pointer">{`${list.Professional_Department} Department`}</span> at <span className="font-[700] underline cursor-pointer">{list.school}</span></div>
+                                    <div className=" text-[14px] w-[400px]">Lecturer in the <span className="font-[700] underline cursor-pointer">{`${list.Professional_Department} Department`}</span> at <span className="font-[700] underline cursor-pointer">{list.school}</span></div>
 
                                     {/* <div className="flex mt-8">
                                         <div className="flex flex-col items-center justify-center" >
@@ -244,7 +244,7 @@ const ProfDetailsPage = () => {
 
                                     {/* similar professors */}
                                     <div>
-                                        <div className="text-[16px] font-[700]">Check out Similar Professors in the {list?.Professional_Department} Department</div>
+                                        <div className="text-[16px] font-[700]">Check out Similar Lecturers in the {list?.Professional_Department} Department</div>
 
                                         <div className="w-full rounded-sm h-[80px] headerMediuheaderMedium:m:t9xt-[ w-[100px]13px] mt-2 bg-[#E8F1FF] flex items-center justify-center">
                                             {randomObjects.map((rave) => {

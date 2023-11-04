@@ -389,7 +389,7 @@ theme="light"
 
     <div className={styles.singleRateBox}>
       <div className={styles.subContainer}>
-      <p>By clicking the "Submit" button, I acknowledge that I have read and agreed to the Rate My Lecturer's Site Guidelines, Terms of Use and Privacy Policy. Submitted data becomes the property of RateMyProfessors.com. IP addresses are logged.</p>
+      <p>By clicking the "Submit" button, I acknowledge that I have read and agreed to the Rate My Lecturer's Site Guidelines, Terms of Use and Privacy Policy. Submitted data becomes the property of RateMyLecturers.com. IP addresses are logged.</p>
       <button onClick={addARating}>Submit Rating</button>
       </div>
       
