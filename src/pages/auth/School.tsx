@@ -6,18 +6,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { registerUser } from "../../api/studentApis";
 import Swal from "sweetalert2";
-// import * as yup from 'yup'
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import {useForm} from "react-hook-form"
 import { useNavigate } from "react-router-dom";
+import LoadingScreen from "../../components/LoadingScreen";
 
 const School = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const user : any = useSelector((state : any) => state.user)
-  // console.log(user)
+
   const [school, setSchool] = useState<boolean>(false);
   const [schooled, setSchooled] = useState<any>();
+
+  const [loading, setLoading] = useState(false)
 
   const [name, setName] = useState<boolean>(false);
   const [named, setNamed] = useState<any>();
@@ -41,22 +41,11 @@ const School = () => {
     }
   };
   
-//   const Schema = yup.object({
-//     email : yup.string().email().required(),
-//     password : yup.string().required()
-//   })
-
-//   const { register, handleSubmit} = useForm({
-//     resolver : yupResolver(Schema)
-//   })
-
-//   const onHandleSubmit = handleSubmit((data : any) =>{
-//     const {} = data
-    
-//   })
 
   return (
-    <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10 fixed text-black z-[100]" 
+    <>
+    {loading && (<LoadingScreen/>)}
+      <div className="w-full h-[100vh] justify-center items-center flex bg-opacity-20 shadow-lg backdrop-blur-md backdrop-filter border border-opacity-18 border-white/5 rounded-10 fixed text-black" 
     
     >
      
@@ -178,11 +167,12 @@ const School = () => {
             onClick={()=>{
               const kkn:any = {email : user?.email, password : user?.password, school : schooled, name : named}
               dispatch(createUser(kkn))
+              setLoading(true)
            
               registerUser({email : user?.email, password : user?.password, school : schooled, name : named}).then((res : any)=>{
                 dispatch(logOut())
                 console.log("res2", res);
-
+                setLoading(false)
                 if(res){
                   Swal.fire({
                     icon : 'success',
@@ -219,6 +209,7 @@ const School = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
