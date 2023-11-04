@@ -10,8 +10,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form"
 import { studentSignIn, studentVerify } from "../../api/studentApis";
 import Swal from "sweetalert2";
-import LoadingScreen from "../../components/LoadingScreen";
-import axios from "axios";
+// import LoadingScreen from "../../components/LoadingScreen";
+// import axios from "axios";
 
 
 const SignIn = () => {
@@ -21,7 +21,7 @@ const SignIn = () => {
   const [parent]  = useAutoAnimate()
   const [email, setEmail] = useState<boolean>(false);
   const [password, setPassword] = useState<boolean>(false);
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
 
   const onEmail = () => {
     setEmail(!email);

@@ -5,6 +5,9 @@ import { useState, useEffect , CSSProperties} from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import LoadingScreen from "../../components/LoadingScreen"
+import {LiaSadTearSolid} from "react-icons/lia"
+import { IconContext } from "react-icons"
+
 
 
 
@@ -95,7 +98,9 @@ const codeToStatus: (code: any) => {
         </div> */}
 
         {/*profs Data  */}
-        {allProfessors?.map((list) => {
+        {allProfessors?.length > 0 ? (
+          <>
+            {allProfessors?.map((list) => {
           return (
             <div 
             className="flex justify-between w-full bg-[#F7F7F7] h-[170px] headerMedium:h-full items-center mt-8 px-6 py-4 cursor-pointer"
@@ -141,6 +146,23 @@ const codeToStatus: (code: any) => {
       </div>
           )
         })}
+          </>
+        ) : (
+          <div className="w-full flex justify-center flex-col items-center">
+            <IconContext.Provider
+                                value={{ color: 'black', size: '100px' }}
+                            >
+                                       <LiaSadTearSolid />
+                               
+                            </IconContext.Provider>
+   
+
+     
+            <h2 className="text-[30px] font-bold">Opps!! No Lecturer Found</h2>
+            <p className="underline cursor-pointer" onClick={() => navigate("/prof/signup")}>Add a professor instead</p>
+          </div>
+        )}
+      
       
 
         

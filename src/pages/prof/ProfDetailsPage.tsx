@@ -1,10 +1,11 @@
-
+//@ts-ignore
+//@ts-nocheck
 
 import Header from "../../components/common/Header"
 import { useState, useEffect } from "react"
-import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai"
-import { GoShare } from "react-icons/go"
-import { GrFlag } from "react-icons/gr"
+// import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai"
+// import { GoShare } from "react-icons/go"
+// import { GrFlag } from "react-icons/gr"
 import { useParams } from 'react-router-dom';
 import LoadingScreen from "../../components/LoadingScreen";
 import axios from "axios"
@@ -35,25 +36,11 @@ const ProfDetailsPage = () => {
     }, [id])
     const [avergeRating, setAverageRating] = useState("")
     const [numberOfRaters, setNumberOfRaters] = useState([])
-
-    useEffect(() => {
-        setLoading(true)
-        axios.get(
-            `https://lecturer-rating.onrender.com/api/prof/rating/${singleProfessor.userId}`
-        )
-            .then((response) => {
-                setLoading(false)
-                console.log(response, "hello")
-                setAverageRating(response.data.averageRating);
-                setNumberOfRaters(response.data.raters)
-            })
-            .catch((err) => {
-                console.log(err)
-                setLoading(false)
-
-            })
-    }, [id])
-    console.log(singleProfessor)
+    const [ratingComments, setRatingComments] = useState([])
+  
+   const [singleProfessorId, setProfessorId] = useState("")
+  
+    console.log(singleProfessor, "single")
 
     useEffect(() => {
         setLoading(true)
@@ -63,14 +50,37 @@ const ProfDetailsPage = () => {
             .then((response) => {
                 setLoading(false)
                 console.log(response)
-                setSingleProfessor(response.data.data.filter((item) => item.userId.includes(id)))
+                setSingleProfessor(response.data.data.filter((item) => item.userId.includes(id)));
+                response.data.data.filter((item) => item.userId.includes(id)).map((id) => {
+                    return (
+                        setProfessorId(id.userId)
+                       
+                    )
+                    
+                })
+                axios.get(
+                    `https://lecturer-rating.onrender.com/api/prof/rating/${singleProfessorId}`
+                )
+                    .then((response) => {
+                        setLoading(false)
+                        console.log(response, "hello")
+                        setAverageRating(response.data.averageRating);
+                        setNumberOfRaters(response.data.raters)
+                        setRatingComments(response.data.comments)
+                        setAllRatings(response.data.rating)
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                        setLoading(false)
+        
+                    })
             })
             .catch((err) => {
                 console.log(err)
                 setLoading(false)
 
             })
-    }, [id])
+    }, [id, singleProfessorId])
     function getRandomObjectsFromArray(array: any, count: any) {
         const randomObjects = [];
         const arrayCopy = [...array]; // Create a copy of the original array to avoid modifying it.
@@ -84,11 +94,66 @@ const ProfDetailsPage = () => {
         return randomObjects;
     }
     const randomObjects = getRandomObjectsFromArray(allProfessors, 3);
-    console.log(randomObjects, "rave")
+  
+      const [allRatings, setAllRatings] = useState([])
+
+    const mappedElements = ratingComments.map((element1, index) => {
+        const element2 = allRatings[index];
+  
+        return (
+            <div className="w-full bg-[#F9F9F9] p-8 mb-5 flex headerMedium:flex-col" key={index}>
+
+            <div className="justify-between hidden mb-5 ml-4 headerMedium:flex">
+                <div className="font-[700]">ANONYMOUS</div>
+                <div className="font-[600] text-[14px]">27 march 2020</div>
+            </div>
+            <div className="headerMedium:flex">
+                <div className="flex justify-center flex-col items-center w-[100px]">
+                    <div className="font-[600] headerMedium:text-[16px]">QUALITY</div>
+                    <div className="w-[75px] text-[30px] font-[800] h-[60px] flex justify-center items-center bg-[#7FF6C3]">{`${element2}.0`}</div>
+                </div>
+                {/* <div className="flex justify-center flex-col items-center w-[100px] mt-8 headerMedium:mt-0">
+                    <div className="font-[600] headerMedium:text-[16px]">DIFFICULTY</div>
+                    <div className="w-[75px] text-[30px] font-[800] h-[60px] flex justify-center items-center bg-[#7FF6C3]">4.0</div>
+                </div> */}
+        
+        
+        
+            </div>
+            <div className="ml-8 headerMedium:ml-3">
+                <div className="mt-2">
+                    <div className="flex justify-between headerMedium:hidden">
+                        <div className="font-[700]">ANONYMOUS</div>
+                        <div className="font-[600] text-[14px]">27 march 2020</div>
+                    </div>
+        
+                    
+                    {/* <div className="flex mt-4 headerMedium:mt-6 headerMedium:flex-col ">
+                        <div className="text-[16px] headerMedium:mb-2 headerMedium:text-[15px]">For Credit: <span className="font-[700] mr-5 ">YES</span></div>
+        
+                        <div className="text-[16px] headerMedium:mb-2 headerMedium:text-[15px]">Grade <span className="font-[700] mr-5">YES</span></div>
+        
+                        <div className="text-[16px] headerMedium:mb-2 headerMedium:text-[15px]">TextBook: <span className="font-[700] mr-5">YES</span></div>
+        
+                        <div className="text-[16px] headerMedium:mb-2 headerMedium:text-[15px]">Attendance: <span className="font-[700] mr-5">YES</span></div>
+                    </div> */}
+        
+                    <div className="text-[15px] mt-4 headerMedium:mt-5 headerMedium:text-[14px]" >{element1}</div>
+        
+        
+                </div>
+            </div>
+        </div>
+        );
+      });
+
+ 
     return (
         <>
+      
             {loading && (<LoadingScreen />)}
             <Header />
+            
             {singleProfessor?.map((list) => {
                 return (
                     <div className="flex items-center justify-center w-full h-full">
@@ -100,17 +165,17 @@ const ProfDetailsPage = () => {
                                 {/* first part */}
 
                                 <div className="w-[33%] h-full headerMedium:w-full ">
-                                    <div className="font-[700] text-[80px]">{`${avergeRating}`}</div>
+                                    <div className="font-[700] text-[80px]">{`${avergeRating}.0`}</div>
 
                                     <div className="font-[700] text-[14px] -mt-3">
-                                        Overall Quality Based on {numberOfRaters.length}  <span className="underline cursor-pointer">ratings</span>
+                                        Overall Quality Based on {numberOfRaters.length}  <span className="underline cursor-pointer">{numberOfRaters.length < 2 ? "rating" : "ratings"}</span>
                                     </div>
 
                                     <div className="font-[700] text-[40px] mt-4">{list.Name}</div>
 
                                     <div className=" text-[14px] w-[400px]">Professor in the <span className="font-[700] underline cursor-pointer">{`${list.Professional_Department} Department`}</span> at <span className="font-[700] underline cursor-pointer">{list.school}</span></div>
 
-                                    <div className="flex mt-8">
+                                    {/* <div className="flex mt-8">
                                         <div className="flex flex-col items-center justify-center" >
                                             <div className="font-[800] text-[30px] ">N/A</div>
                                             <div className=" text-[14px]">Would take again</div>
@@ -120,7 +185,7 @@ const ProfDetailsPage = () => {
                                             <div className="font-[800] text-[30px] ">3.3</div>
                                             <div className=" text-[14px]">Level of Difficulty</div>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <div
                                         onClick={() => navigate(`/rate-a-professor/${list.userId}`)}
@@ -139,10 +204,10 @@ const ProfDetailsPage = () => {
                                 </div>
 
                                 {/* second part */}
-                                <div className="w-[500px] headerMedium:ml-4 headerMedium:mt-5 headerMedium:w-full flex flex-col justify-center items-center">
-
+                                {/* <div className="w-[500px] headerMedium:ml-4 headerMedium:mt-5 headerMedium:w-full flex flex-col justify-center items-center"> */}
+<div>
                                     {/* a */}
-                                    <div className="w-full p-5 bg-gray-100 rounded-md ">
+                                    {/* <div className="w-full p-5 bg-gray-100 rounded-md ">
                                         <div className=" text-[16px] font-[700] ">
                                             Rating Distribution
                                         </div>
@@ -175,10 +240,10 @@ const ProfDetailsPage = () => {
                                             <div className="w-[350px] h-[40px] bg-gray-200 mx-4 headerMedium:w-[200px]"></div>
                                             <div className="font-[500]">0</div>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     {/* similar professors */}
-                                    <div className="mt-9">
+                                    <div>
                                         <div className="text-[16px] font-[700]">Check out Similar Professors in the {list?.Professional_Department} Department</div>
 
                                         <div className="w-full rounded-sm h-[80px] headerMediuheaderMedium:m:t9xt-[ w-[100px]13px] mt-2 bg-[#E8F1FF] flex items-center justify-center">
@@ -214,7 +279,7 @@ const ProfDetailsPage = () => {
                             {/* courses ratings */}
                             <div className="mt-7 w-[73%] headerMedium:w-full">
                                 <div className="cursor-pointer hover:text-gray-500">
-                                    <div className="text-[15px] font-[700] mb-3">0 students Rating</div>
+                                    <div className="text-[15px] font-[700] mb-3">{`${ratingComments.length} students Rating`}</div>
                                     <div className="w-[150px] h-[2px] bg-black hover:text-gray-500"></div>
                                 </div>
                                 <div className="w-full bg-gray-300 h-[2px]"></div>
@@ -227,52 +292,23 @@ const ProfDetailsPage = () => {
 
                                 {/* rating words */}
 
-                                {/* <div className="w-full bg-[#F9F9F9] p-8 mb-5 flex headerMedium:flex-col">
-
-                                    <div className="justify-between hidden mb-5 ml-4 headerMedium:flex">
-                                        <div className="font-[700]">PHIL100</div>
-                                        <div className="font-[600] text-[14px]">27 march 2020</div>
-                                    </div>
-                                    <div className="headerMedium:flex">
-                                        <div className="flex justify-center flex-col items-center w-[100px]">
-                                            <div className="font-[600] headerMedium:text-[16px]">QUALITY</div>
-                                            <div className="w-[75px] text-[30px] font-[800] h-[60px] flex justify-center items-center bg-[#7FF6C3]">4.0</div>
-                                        </div>
-                                        <div className="flex justify-center flex-col items-center w-[100px] mt-8 headerMedium:mt-0">
-                                            <div className="font-[600] headerMedium:text-[16px]">DIFFICULTY</div>
-                                            <div className="w-[75px] text-[30px] font-[800] h-[60px] flex justify-center items-center bg-[#7FF6C3]">4.0</div>
-                                        </div>
-
-
-
-                                    </div>
-                                    <div className="ml-8 headerMedium:ml-3">
-                                        <div className="mt-2">
-                                            <div className="flex justify-between headerMedium:hidden">
-                                                <div className="font-[700]">PHIL100</div>
-                                                <div className="font-[600] text-[14px]">27 march 2020</div>
-                                            </div>
-
-                                            
-                                            <div className="flex mt-4 headerMedium:mt-6 headerMedium:flex-col ">
-                                                <div className="text-[16px] headerMedium:mb-2 headerMedium:text-[15px]">For Credit: <span className="font-[700] mr-5 ">YES</span></div>
-
-                                                <div className="text-[16px] headerMedium:mb-2 headerMedium:text-[15px]">Grade <span className="font-[700] mr-5">YES</span></div>
-
-                                                <div className="text-[16px] headerMedium:mb-2 headerMedium:text-[15px]">TextBook: <span className="font-[700] mr-5">YES</span></div>
-
-                                                <div className="text-[16px] headerMedium:mb-2 headerMedium:text-[15px]">Attendance: <span className="font-[700] mr-5">YES</span></div>
-                                            </div>
-
-                                            <div className="text-[15px] mt-7 headerMedium:mt-5 headerMedium:text-[14px]" >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis aspernatur quod laboriosam commodi? Voluptates magnam itaque consequatur quasi aliquam laborum! Sit vel iste voluptate doloremque dolores dignissimos suscipit fuga? Iure.</div>
-
-
-                                        </div>
-                                    </div>
-                                </div> */}
-<div >
+                             
+                                {ratingComments.length < 1 ? (
+                                <div >
     <h2 className="font-[700]">OPPs! This Professor Has No Rating</h2>
 </div>
+                                ) : (
+                                    <>
+                                    {ratingComments.map((data) => {
+return (
+    <>
+    {mappedElements}
+    </>
+)
+                                    })}
+                                    </>
+                                )}
+
                             </div>
 
 

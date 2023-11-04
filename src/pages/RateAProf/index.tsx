@@ -8,6 +8,7 @@ import LoadingScreen from "../../components/LoadingScreen";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 
 const RateAProf = () => {
@@ -76,6 +77,7 @@ const RateAProf = () => {
 
   const [singleProfessor, setSingleProfessor] = useState([])
   const [loading, setLoading] = useState(false)
+  const [professorId, setProfessorId] = useState("")
 
   useEffect(() => {
       setLoading(true)
@@ -86,6 +88,11 @@ const RateAProf = () => {
        setLoading(false)
           console.log(response)
           setSingleProfessor(response.data.data.filter((item: any) => item.userId.includes(id)))
+          response.data.data.filter((item: any) => item.userId.includes(id)).map((id: any) => {
+            return (
+              setProfessorId(id.userId)
+            )
+          })
          })
         .catch((err) => {
           console.log(err)
@@ -109,15 +116,16 @@ const RateAProf = () => {
     else {
       setLoading(true)
       axios.post(
-        `https://lecturer-rating.onrender.com/api/user/${user._id}/${singleProfessor.userId}`,
+        `https://lecturer-rating.onrender.com/api/user/${user._id}/${professorId}`,
         {
           rating: professorRating,
           comments: comment
         }
       )
       .then((response) => {
-        toast.success("Lecturar rated successfully")
+        toast.success("Lecturer rated successfully")
         setLoading(false)
+        navigate(`/professor-details/${professorId}`)
     })
       .catch((err) => {
         console.log(err);

@@ -1,3 +1,6 @@
+//@ts-ignore
+//@ts-nocheck
+
 import pics from "../../assets/rmp 2.svg";
 import pics2 from "../../assets/apple logo.svg";
 import pics3 from "../../assets/dropdown main.svg";
