@@ -220,7 +220,9 @@ const ProfMainSign = () => {
 
             <div className="mt-1">
               <select className="w-full h-[40px] bg-white border border-gray-300 px-4 placeholder:text-black outline-0 rounded-sm" value={selectedOption} onChange={handleSelectChange} >
-                <option value=""></option>
+              <option value=""></option>
+                <option value="FUNAAB">FUNAAB</option>
+                hi
                 {allschools.map((list) => {
                   return (
                     <>

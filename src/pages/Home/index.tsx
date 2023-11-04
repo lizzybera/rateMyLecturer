@@ -60,8 +60,9 @@ const Home = () => {
         )
             .then((response) => {
                 setLoading(false)
-                console.log(response)
-                const filteredProfessors = response.data.data.filter(person => person.Name.toLowerCase().includes(profileInput.toLowerCase()));
+                console.log(response.data.data, "my data");
+                const filteredBasedOnFunnab =  response.data.data.filter(person => person.school.toLowerCase().includes("FUNAAB".toLowerCase()))
+                const filteredProfessors =  filteredBasedOnFunnab.filter(person => person.Name.toLowerCase().includes(profileInput.toLowerCase()));
                 setAllProfessors(filteredProfessors)
             })
             .catch((err) => {
@@ -91,9 +92,10 @@ const Home = () => {
                 <div className={styles.newDropDownContainer}>
                     <header>
                         <section className={styles.heroHeader}>
-                            <div className={styles.ratingCover}>
+                            {/* <div className={styles.ratingCover}>
                                 <img src={rateLogo} alt='rate-logo' />
-                            </div>
+                            </div> */}
+                            <h1 style={{fontSize: "1.7rem", fontWeight: "800"}}>Rate My Lecturer</h1>
                             <h1>Please Select Your School</h1>
                             <div className={styles.pointerFlex}>
                                 <div

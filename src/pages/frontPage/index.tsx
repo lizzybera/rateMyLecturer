@@ -6,9 +6,15 @@ import editFlower from "../../assets/edit-flower.svg"
 import editLike from "../../assets/edit-like.svg"
 import LandingHeader from '../../components/common/LandingHeader';
 import Footer from '../../components/common/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleState} from "../../global/GlobalState";
+
 
 
 const FrontPage = () => {
+    const user = useSelector((state : any) => state.user)
+    const dispatch = useDispatch();
+  
     return (
         <div>
             <LandingHeader />
@@ -32,7 +38,18 @@ const FrontPage = () => {
                     <h2>Like or dislike ratings</h2>
                 </div>
             </div>
-            <button className={styles.signUpButton}>Sign up now!</button>
+            {user ? (
+                   <button className={styles.signUpButton}  
+              >{`Hey ${user.name}`}</button>
+            ) : (
+                <button
+                 className={styles.signUpButton}
+                 onClick={()=>{
+                    dispatch(toggleState())
+                }}
+                 >Sign up now!</button>
+            )}
+         
             </div>
             <Footer />
         </div>
