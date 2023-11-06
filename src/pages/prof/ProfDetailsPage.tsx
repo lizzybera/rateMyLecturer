@@ -58,6 +58,7 @@ const ProfDetailsPage = () => {
                     )
                     
                 })
+                setLoading(true)
                 axios.get(
                     `https://lecturer-rating.onrender.com/api/prof/rating/${singleProfessorId}`
                 )
@@ -252,7 +253,7 @@ const ProfDetailsPage = () => {
                                                     <div
                                                         onClick={() => navigate(`/professor-details/${rave.userId}`)}
                                                         className="flex ju headerMedium:w-[200px]stify-center items-center cursor-pointer">
-                                                        <div className="text-white font-[700] bg-blue-600 cursor-pointer duration-200 hover:bg-blue-700 w-[60px] h-[38px] flex justify-center items-center ">{`${rave.__v}.0`}</div>
+                                                        <div className="text-white font-[700] bg-blue-600 cursor-pointer duration-200 hover:bg-blue-700 w-[60px] h-[38px] flex justify-center items-center ">{`${rave.averageRate === null ? 0 : rave.averageRate}.0`}</div>
                                                         <div className="text-[13px] ml-3 mr-4">{rave.Name}</div>
                                                     </div>
                                                 )
@@ -295,7 +296,7 @@ const ProfDetailsPage = () => {
                              
                                 {ratingComments.length < 1 ? (
                                 <div >
-    <h2 className="font-[700]">OPPs! This Professor Has No Rating</h2>
+    <h2 className="font-[700]">OPPs! This Lecturer Has No Rating</h2>
 </div>
                                 ) : (
                                     <>

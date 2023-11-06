@@ -13,12 +13,14 @@ import { useNavigate } from "react-router-dom";
 
 const RateAProf = () => {
  const {id} = useParams();
+ const navigate = useNavigate();
  const user = useSelector((state : any) => state.user)
- console.log(user, "the user")
+
   const [professorRating, setProfessorRating] = useState<number>(0)
   const [professorDifficulty, setProfessorDifficulty] = useState<number>(0)
   const [professorRatingMessage, setProfessorRatingMessage] = useState("")
   const [professorDifficultyMessage, setprofessorDifficultyMessage] = useState("")
+
 
   const [takeProfessorAgain, setTakeProfessorAgain] = useState('none');
   const [creditClass, setCreditClass] = useState("none")
@@ -104,7 +106,10 @@ const RateAProf = () => {
   console.log(singleProfessor)
 
   const addARating = () => {
-    if (professorRating === 0) {
+    if (!user) {
+      toast.error("Please Log in Before you can Rate a Lecturer")
+    }
+    else if (professorRating === 0) {
       toast.error("Please add a rating for this lecturer")
     }
     else if (professorRating === 0) {
