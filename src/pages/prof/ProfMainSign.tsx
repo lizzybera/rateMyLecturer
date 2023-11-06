@@ -1,4 +1,6 @@
 /* eslint-disable */
+//@ts-ignore
+//@ts-nocheck
 
 import { useState, useEffect } from "react";
 // import * as yup from 'yup'
@@ -70,9 +72,9 @@ const ProfMainSign = () => {
   //     setName(false)
   //   }
   // };
-  const onFirstName = () => {
-    setFirstName(!firstName);
-  };
+  // const onFirstName = () => {
+  //   setFirstName(!firstName);
+  // };
 
   // const onFirstName2 = () => {
   //   if (firstName === true) {
@@ -101,11 +103,11 @@ const ProfMainSign = () => {
   //   setDepartment(!department);
   // };
 
-  const onDepartment2 = () => {
-    if (department === true) {
-      setDepartment(false)
-    }
-  };
+  // const onDepartment2 = () => {
+  //   if (department === true) {
+  //     setDepartment(false)
+  //   }
+  // };
 
   // const Schema = yup.object({
   //   // email : yup.string().email().required(),
@@ -182,13 +184,13 @@ const ProfMainSign = () => {
     };
   return (
     <div className="w-full h-[100%] py-10"
-      onClick={() => {
-        // onName2()
-        onLastName2()
-        onFirstName2()
-        onMiddleName2()
-        onDepartment2()
-      }}
+      // onClick={() => {
+      //   // onName2()
+      //   onLastName2()
+      //   onFirstName2()
+      //   onMiddleName2()
+      //   onDepartment2()
+      // }}
     >
       <ToastContainer
         position="bottom-right"
@@ -222,11 +224,11 @@ const ProfMainSign = () => {
               <select className="w-full h-[40px] bg-white border border-gray-300 px-4 placeholder:text-black outline-0 rounded-sm" value={selectedOption} onChange={handleSelectChange} >
               <option value=""></option>
                 <option value="FUNAAB">FUNAAB</option>
-                hi
+                
                 {allschools.map((list) => {
                   return (
                     <>
-                      <option value={list.schoolName}>{list.schoolName}</option>
+                      <option value={list?.schoolName}>{list.schoolName}</option>
                     </>
                   )
                 })}

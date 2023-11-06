@@ -5,7 +5,7 @@ import { IconContext } from "react-icons";
 import { useParams } from "react-router";
 import axios from "axios";
 import LoadingScreen from "../../components/LoadingScreen";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
@@ -131,6 +131,7 @@ const RateAProf = () => {
         toast.success("Lecturer rated successfully")
         setLoading(false)
         navigate(`/professor-details/${professorId}`)
+        console.log(response)
     })
       .catch((err) => {
         console.log(err);

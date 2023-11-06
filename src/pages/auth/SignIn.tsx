@@ -11,7 +11,7 @@ import {useForm} from "react-hook-form"
 import { studentSignIn, studentVerify } from "../../api/studentApis";
 import Swal from "sweetalert2";
 import LoadingScreen from "../../components/LoadingScreen";
-import axios from "axios";
+// import axios from "axios";
 
 
 const SignIn = () => {
