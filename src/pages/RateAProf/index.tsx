@@ -1,6 +1,9 @@
 import  { useState, useEffect } from "react"
 import styles from "./style.module.css"
 import { LuAlertOctagon } from "react-icons/lu"
+import { MdLaptopWindows } from "react-icons/md"
+import { IoMdCheckmarkCircle } from "react-icons/io"
+import { BsCircle } from "react-icons/bs"
 import { IconContext } from "react-icons";
 import { useParams } from "react-router";
 import axios from "axios";
@@ -20,7 +23,11 @@ const RateAProf = () => {
   const [professorDifficulty, setProfessorDifficulty] = useState<number>(0)
   const [professorRatingMessage, setProfessorRatingMessage] = useState("")
   const [professorDifficultyMessage, setprofessorDifficultyMessage] = useState("")
+  const [iconShow, setIconShow] = useState<boolean>(false)
 
+const onIcon = ()=>{
+  setIconShow(!iconShow)
+}
 
   const [takeProfessorAgain, setTakeProfessorAgain] = useState('none');
   const [creditClass, setCreditClass] = useState("none")
@@ -150,12 +157,65 @@ return (
   <div className="flex flex-col px-10 py-10 mobile:px-6 mobile:justify-center"
   >
 
-    <div className={styles.fixedHeader}>
+    <div className={`${styles.fixedHeader} z-[2]`}>
       <div className={styles.fixedHeaderContainer}>
       <h2>Rate : <b>{list.Name}</b></h2>
       <p>{list.Professional_Department} . <span>{list.school}</span></p>
       </div>
     </div>
+
+    <div className={`${styles.singleRateBox} ${styles.newRateBox} mb-[-80px]`}>
+      <h2>Select Course Code<sup>*</sup></h2>
+      <div className={styles.rateBox}>
+        <div>
+
+        <select name="" id="" className="w-[300px] h-[40px] border outline-none hover:border-blue-500 cursor-pointer">
+          <option value="">Select course code</option>
+          <option value="">102</option>
+          <option value="">111</option>
+          <option value="">111</option>
+          <option value="">111</option>
+          <option value="">111</option>
+          <option value="">111</option>
+          <option value="">111</option>
+          <option value="">111</option>
+          <option value="">111</option>
+          <option value="">111</option>
+          <option value="">111</option>
+          <option value="">111</option>
+          <option value="">111</option>
+          <option value="">111</option>
+        </select>
+
+
+        <div className="text-[15px] mt-[15px] flex text-black items-center h-[20px] w-[270px] justify-between">
+         <div className=" cursor-pointer ">
+         {
+           !iconShow ? (<BsCircle size={25}
+           onClick={()=>{
+            onIcon()
+           }}
+           />) : (<IoMdCheckmarkCircle size={30}
+            onClick={()=>{
+              onIcon()
+             }}
+           />)
+         }
+         </div>
+
+<div className="flex">
+<div className="ml-3">
+<MdLaptopWindows size={25} />
+</div>
+        <span className="ml-3">This is an online course</span>
+</div>
+        </div>
+        </div>
+
+      </div>
+   
+    </div>
+
     <div className={`${styles.singleRateBox} ${styles.newRateBox}`}>
       <h2>Rate your Lecturer<sup>*</sup></h2>
       <div className={styles.rateBox}>
@@ -205,6 +265,7 @@ theme="light"
         </div>
       )}
     </div>
+
     <div className={styles.singleRateBox}>
       <h2>How difficult was this Lecturer?<sup>*</sup></h2>
       <div className={styles.rateBox}>
@@ -244,6 +305,7 @@ theme="light"
 
 
     </div>
+
     <div className={styles.singleRateBox}>
       <h2>Would you take this lecturer again?<sup>*</sup></h2>
       <div className={styles.inputBoxFlex}>
@@ -273,6 +335,7 @@ theme="light"
 
 
     </div>
+
     <div className={styles.singleRateBox}>
       <h2>Was this class taken for credit?<sup>*</sup></h2>
       <div className={styles.inputBoxFlex}>
@@ -302,6 +365,7 @@ theme="light"
 
 
     </div>
+
     <div className={styles.singleRateBox}>
       <h2>Did this lecturer use textbooks?<sup>*</sup></h2>
       <div className={styles.inputBoxFlex}>
@@ -331,6 +395,7 @@ theme="light"
 
 
     </div>
+
     <div className={styles.singleRateBox}>
       <h2>Was attendance mandatory?<sup>*</sup></h2>
       <div className={styles.inputBoxFlex}>
@@ -360,6 +425,7 @@ theme="light"
 
 
     </div>
+    
     <div className={styles.singleRateBox}>
       <h2>Write a Review<sup>*</sup></h2>
 
