@@ -425,6 +425,53 @@ theme="light"
 
 
     </div>
+
+    <div className="border-[1px] border-[rgb(228, 228, 228)] rounded-[6px] shadow-[rgba(126, 126, 126, 0.25)] shadow-md w-[98%] p-10 m-[10px]">
+      <h2 className="font-[700]">Select up to 3 tags<sup className="text-[red]">*</sup></h2>
+       <div className="w-full flex flex-wrap mt-5">
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Tough Grader</div>
+          
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Get Ready to Read</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Participation matters</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Extra Credits</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Group Projects</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Amazing lecturers</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Clear grading materials</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Gives good feedback</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Inspirational</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Lots of HoomWork</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Hilarious</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Beware of pop quiz</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">So Many papers</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Caring</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Respected</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Lecture Heavy</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Test Heavy</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Graded by few things </div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Accessible outside class</div>
+
+          <div className="bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1">Online Savvy</div>
+       </div>
+
+    </div>
+
     
     <div className={styles.singleRateBox}>
       <h2>Write a Review<sup>*</sup></h2>
