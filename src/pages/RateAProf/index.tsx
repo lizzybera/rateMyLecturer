@@ -1,10 +1,10 @@
 import  { useState, useEffect } from "react"
 import styles from "./style.module.css"
-import { LuAlertOctagon } from "react-icons/lu"
+// import { LuAlertOctagon } from "react-icons/lu"
 import { MdLaptopWindows } from "react-icons/md"
 import { IoMdCheckmarkCircle } from "react-icons/io"
 import { BsCircle } from "react-icons/bs"
-import { IconContext } from "react-icons";
+// import { IconContext } from "react-icons";
 import { useParams } from "react-router";
 import axios from "axios";
 import LoadingScreen from "../../components/LoadingScreen";
@@ -34,7 +34,7 @@ const onIcon = ()=>{
   const [creditClass, setCreditClass] = useState("none")
   const [useTextBooks, setUseTextBook] = useState("none")
   const [mandatory, setMandetory] = useState("none")
-  const [comment, setComment] = useState("")
+  // const [comment, setComment] = useState("")
 
 
 
