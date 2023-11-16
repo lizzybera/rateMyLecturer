@@ -259,6 +259,17 @@
     width: 100%;
 }
 
+.newInputcode {
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 5px;
+    font-family: Helvetica, arial;
+    font-size: 16px;
+    outline: none;
+    padding: 16px ;
+    resize: none;
+    width: 100%;
+}
+
 .guideLineBox ul {
    margin: 10px 0;
 }

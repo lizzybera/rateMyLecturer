@@ -48,7 +48,7 @@ const ProfDetailsPage = () => {
             `https://lecturer-rating.onrender.com/api/prof`
         )
             .then((response) => {
-                setLoading(false)
+                
                 console.log(response)
                 setSingleProfessor(response.data.data.filter((item) => item.userId.includes(id)));
                 response.data.data.filter((item) => item.userId.includes(id)).map((id) => {
@@ -58,7 +58,7 @@ const ProfDetailsPage = () => {
                     )
                     
                 })
-                setLoading(true)
+               
                 axios.get(
                     `https://lecturer-rating.onrender.com/api/prof/rating/${singleProfessorId}`
                 )
@@ -174,7 +174,7 @@ const ProfDetailsPage = () => {
 
                                     <div className="font-[700] text-[40px] mt-4">{list.Name}</div>
 
-                                    <div className=" text-[14px] w-[400px]">Lecturer in the <span className="font-[700] underline cursor-pointer">{`${list.Professional_Department} Department`}</span> at <span className="font-[700] underline cursor-pointer">{list.school}</span></div>
+                                    <div className=" text-[14px] w-[400px]">Lecturer in the <span className="font-[700] underline cursor-pointer" onClick={() => navigate("/profs/all")}>{`${list.Professional_Department} Department`}</span> at <span className="font-[700] underline cursor-pointer" onClick={() => navigate("/profs/all")}>{list.school}</span></div>
 
                                     {/* <div className="flex mt-8">
                                         <div className="flex flex-col items-center justify-center" >

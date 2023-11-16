@@ -138,7 +138,7 @@ console.log(profileInput);
 {
   !search ? (
     // <img className="mr-12" src={pics} alt="logo" onClick={() => navigate("/")}/>
-    <h2 className="font-900">RML</h2>
+    <h2 className="font-900" onClick={() => navigate("/")}>RML</h2>
   ) : null
 }
          
