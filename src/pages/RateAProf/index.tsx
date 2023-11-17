@@ -114,6 +114,7 @@ const onIcon = ()=>{
   console.log(singleProfessor)
   console.log(professorId)
   const [toughGrader, setToughGrader] = useState(false)
+  console.log(toughGrader)
   const [getReadyToRead, setGetReadyToRead] = useState(false)
   const [participationMatters, setParticipationMatters] = useState(false)
   const [extraCredits, setExtraCredits] = useState(false)
@@ -511,71 +512,91 @@ theme="light"
     <div className="border-[1px] border-[rgb(228, 228, 228)] rounded-[6px] shadow-[rgba(126, 126, 126, 0.25)] shadow-md w-[98%] p-10 m-[10px]">
       <h2 className="font-[700]">Select up to 3 tags<sup className="text-[red]">*</sup></h2>
        <div className="flex flex-wrap w-full mt-5">
-          <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${toughGrader && "bg-blue-200 cursor-pointer my-1"}`}
+          <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${toughGrader && "cursor-pointer my-1"}`}
+          style={ {background: toughGrader ? "rgb(191 219 254 / 1)" : ""}}
 
           onClick={() => {setToughGrader(!toughGrader)}}
           >Tough Grader</div>
           
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${getReadyToRead && "bg-blue-200 cursor-pointer my-1"}`}
-
+          style={ {background: getReadyToRead ? "rgb(191 219 254 / 1)" : ""}}
 onClick={() => {setGetReadyToRead(!getReadyToRead)}}>Get Ready to Read</div>
 
           <div 
           className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${participationMatters && "bg-blue-200 cursor-pointer my-1"}`}
+          style={ {background: participationMatters? "rgb(191 219 254 / 1)" : ""}}
           onClick={() => {setParticipationMatters(!participationMatters)}}
           >Participation matters</div>
 
           <div 
              className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${extraCredits && "bg-blue-200 cursor-pointer my-1"}`}
+             style={ {background: extraCredits ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setExtraCredits(!extraCredits)}}
           >Extra Credits</div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${groupProjects && "bg-blue-200 cursor-pointer my-1"}`}
+            style={ {background: groupProjects ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setGroupProjects(!groupProjects)}}>Group Projects</div>
 
           <div  className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${amazinglecturers && "bg-blue-200 cursor-pointer my-1"}`}
+                      style={ {background: amazinglecturers ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setAmazingLecturers(!amazinglecturers)}}>Amazing lecturers</div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${clearGradingMaterials && "bg-blue-200 cursor-pointer my-1"}`}
+             style={ {background: clearGradingMaterials ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setClearGradingMaterials(!clearGradingMaterials)}}>Clear grading materials</div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${givesGoodFeedback && "bg-blue-200 cursor-pointer my-1"}`}
+           style={ {background: givesGoodFeedback ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setGivesGoodFeedback(!givesGoodFeedback)}}>Gives good feedback</div>
 
           <div  className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${inspirational && "bg-blue-200 cursor-pointer my-1"}`}
+           style={ {background: inspirational ? "rgb(191 219 254 / 1)" : ""}}
+          
              onClick={() => {setInspirational(!inspirational)}}>Inspirational</div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${lotsOfHomework && "bg-blue-200 cursor-pointer my-1"}`}
+          style={ {background: lotsOfHomework ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setLotsOfHomework(!lotsOfHomework)}}>Lots of HomeWork</div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${hilarous && "bg-blue-200 cursor-pointer my-1"}`}
+             style={ {background: hilarous ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setHilarous(!hilarous)}}>Hilarious</div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${bewareOfPopQuiz && "bg-blue-200 cursor-pointer my-1"}`}
+           style={ {background: bewareOfPopQuiz ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setBewareOfPopQuiz(!bewareOfPopQuiz)}}>Beware of pop quiz</div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${soManyPapers && "bg-blue-200 cursor-pointer my-1"}`}
+           style={ {background: soManyPapers ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setSoManyPapers(!soManyPapers)}}>So Many papers</div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${caring && "bg-blue-200 cursor-pointer my-1"}`}
+           style={ {background: caring ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setCaring(!caring)}}>Caring</div>
 
           <div  className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${respected && "bg-blue-200 cursor-pointer my-1"}`}
+          style={ {background: respected ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setRespected(!respected)}}>Respected</div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${lectureHeavy && "bg-blue-200 cursor-pointer my-1"}`}
+          style={ {background: lectureHeavy ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setLectureHeavy(!lectureHeavy)}}>Lecture Heavy</div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${testHeavy && "bg-blue-200 cursor-pointer my-1"}`}
+          style={ {background: testHeavy ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setTestHeavy(!testHeavy)}}>Test Heavy</div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${gradedByFewThings && "bg-blue-200 cursor-pointer my-1"}`}
+           style={ {background: gradedByFewThings ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setGradedByFewThings(!gradedByFewThings)}}>Graded by few things </div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${accessibleOutsideClass && "bg-blue-200 cursor-pointer my-1"}`}
+           style={ {background: accessibleOutsideClass ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setAccessibleOutsideClass(!accessibleOutsideClass)}}>Accessible outside class</div>
 
           <div className={`bg-slate-200 px-5 h-8 flex justify-center items-center rounded-full text-[12px] mr-3 hover:bg-blue-200 cursor-pointer my-1 ${onlineSavvy && "bg-blue-200 cursor-pointer my-1"}`}
+           style={ {background: onlineSavvy ? "rgb(191 219 254 / 1)" : ""}}
              onClick={() => {setOnlineSavvy(!onlineSavvy)}}>Online Savvy</div>
        </div>
 
