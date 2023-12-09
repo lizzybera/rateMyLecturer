@@ -16,6 +16,8 @@ import ProfilePage from "../pages/profilePage/ProfilePage"
 import AccountSettings from "../pages/profilePage/AccountSettings"
 import Ratings from "../pages/profilePage/Ratings"
 import SavedProfessors from "../pages/profilePage/SavedProfessors"
+import TermsOfUse from "../pages/docs/TermsOfUse"
+import SiteGuidelines from "../pages/docs/SiteGuidelines"
 
 export const mainRouter = createBrowserRouter ([
     {
@@ -41,6 +43,14 @@ export const mainRouter = createBrowserRouter ([
     {
         path : "/saved-prof",
         element : <SavedProfessors />
+    },
+    {
+        path : "/terms",
+        element : <TermsOfUse />
+    },
+    {
+        path : "/guide",
+        element : <SiteGuidelines />
     },
     {
         path : "/sign-in",
